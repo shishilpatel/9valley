@@ -78,7 +78,7 @@
     }
 </style>
 <div class="d-flex justify-content-center text-center {{Session::get('direction') === "rtl" ? 'text-md-right' : 'text-md-left'}} mt-3"
-        style="background: {{$web_config['primary_color']}}10;padding:20px;">
+        style="background: #fff;padding:20px;">
         {{-- <div class="col-md-1">
 
         </div> --}}
@@ -333,7 +333,7 @@
 
 
     <!-- Grid row -->
-    <div style="background: {{$web_config['primary_color']}}10;">
+    <div style="background: #fff;">
         <div class="container">
             <div class="row end-footer footer-end last-footer-content-align">
                 <div class=" mt-3">
