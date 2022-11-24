@@ -426,8 +426,8 @@
 
         .navbar-tool .navbar-tool-label {
             position: absolute;
-            top: -.3125rem;
-            right: -.3125rem;
+            top: 1.4rem;
+            right: -0.1rem;
             width: 1.25rem;
             height: 1.25rem;
             border-radius: 50%;
@@ -638,6 +638,9 @@
             margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -8px !important;
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
+        }
+        .mega-nav * {
+            color: #000;
         }
     </style>
 
