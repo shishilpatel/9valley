@@ -14,7 +14,7 @@
         border-radius: 5px;
     }
     .subscribe-button{
-        background: #1B7FED;
+        background: #000;
         position: absolute;
         top: 0;
         color: white;
