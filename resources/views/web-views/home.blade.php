@@ -692,7 +692,7 @@
 
                                     @php($overallRating = \App\CPU\ProductManager::get_overall_rating($deal_of_the_day->product['reviews']))
                                     <div class="rating-show" style="height:125px; ">
-                                        <h5 style="font-weight: 600; color: {{$web_config['primary_color']}}">
+                                        <h5 style="font-weight: 600; color: #fff">
                                             {{\Illuminate\Support\Str::limit($deal_of_the_day->product['name'],30)}}
                                         </h5>
                                         <span class="d-inline-block font-size-sm text-body">

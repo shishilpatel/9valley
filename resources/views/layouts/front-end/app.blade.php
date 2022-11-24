@@ -49,7 +49,9 @@
         body {
             background-color: #f7f8fa94;
         }
-
+        ul.dropdown-menu .dropdown:hover {
+            background: #fcb800;
+        }
         .rtl {
             direction: {{ Session::get('direction') }};
         }
