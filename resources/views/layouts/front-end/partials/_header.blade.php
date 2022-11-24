@@ -648,7 +648,7 @@
 
                             <li class="nav-item">
                                 <a style="padding-top: 1.125rem;padding-bottom: 0.875rem;padding-left: 15rem;" class="topbar-link d-none d-md-inline-block" href="https://wa.link/m6l4fr">
-                                    <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
+                                    <i class="fa fa-whatsapp"></i> {{$web_config['phone']->value}}
                                 </a>
                             </li>
                         @endif

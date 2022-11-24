@@ -493,7 +493,7 @@
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             font-size: 18px;
-            color: #fff;
+            /*color: #fff;*/
         }
 
         a:hover {
@@ -656,6 +656,12 @@
 
     <style>
         .dropdown-menu {
+            min-width: 304px !important;
+            margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -8px !important;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+        .business-menu .dropdown-menu {
             min-width: 117px !important;
             margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -8px !important;
             border-top-left-radius: 0px;
