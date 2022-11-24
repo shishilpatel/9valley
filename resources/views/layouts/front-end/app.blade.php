@@ -56,6 +56,17 @@
             direction: {{ Session::get('direction') }};
         }
 
+        ul.navbar-nav.business-menu li::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 2px;
+            height: 15px;
+            background-color: #000;
+        }
+
         .password-toggle-btn .password-toggle-indicator:hover {
             color: {{$web_config['primary_color']}};
         }

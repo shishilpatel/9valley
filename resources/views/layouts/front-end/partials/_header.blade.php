@@ -140,54 +140,7 @@
             </div>
 
             <div>
-                @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
-                @if($currency_model=='multi_currency')
-                    <div class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
-                        <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
-                            <span>{{session('currency_code')}} {{session('currency_symbol')}}</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
-                            style="min-width: 160px!important;text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                            @foreach (\App\Model\Currency::where('status', 1)->get() as $key => $currency)
-                                <li style="cursor: pointer" class="dropdown-item"
-                                    onclick="currency_change('{{$currency['code']}}')">
-                                    {{ $currency->name }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
-                @php( $local = \App\CPU\Helpers::default_lang())
-                <div
-                    class="topbar-text dropdown disable-autohide  text-capitalize">
-                    <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
-                        @foreach(json_decode($language['value'],true) as $data)
-                            @if($data['code']==$local)
-                                <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}" width="20"
-                                     src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
-                                     alt="Eng">
-                                {{$data['name']}}
-                            @endif
-                        @endforeach
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
-                        style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                        @foreach(json_decode($language['value'],true) as $key =>$data)
-                            @if($data['status']==1)
-                                <li>
-                                    <a class="dropdown-item pb-1" href="{{route('lang',[$data['code']])}}">
-                                        <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                                             width="20"
-                                             src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
-                                             alt="{{$data['name']}}"/>
-                                        <span style="text-transform: capitalize">{{$data['name']}}</span>
-                                    </a>
-                                </li>
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -357,8 +310,8 @@
                                href="#" data-toggle="dropdown" style="{{request()->is('/')?'pointer-events: none':''}}">
                                 <i class="czi-menu align-middle mt-n1 {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>
                                 <span
-                                    style="margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 40px !important;margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 50px">
-                                    {{ \App\CPU\translate('categories')}}
+                                    style="">
+                                    Shop by Department
                                 </span>
                             </a>
                             @if(request()->is('/'))
@@ -563,7 +516,7 @@
                         </li>
                     </ul>
                     <!-- Primary menu-->
-                    <ul class="navbar-nav" style="{{Session::get('direction') === "rtl" ? 'padding-right: 0px' : ''}}">
+                    <ul class="navbar-nav business-menu" style="{{Session::get('direction') === "rtl" ? 'padding-right: 0px' : ''}}">
 {{--                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">--}}
 {{--                            <a class="nav-link" href="{{route('home')}}">{{ \App\CPU\translate('Home')}}</a>--}}
 {{--                        </li>--}}
@@ -616,12 +569,12 @@
 
                             @php($seller_registration=\App\Model\BusinessSetting::where(['type'=>'seller_registration'])->first()->value)
                             @if($seller_registration)
-                                <li class="nav-item dropdown">
+                                <li class="nav-item">
 				                    <a class="nav-link" href="{{route('shop.apply')}}">
                                         Sell on YeapCart
                                     </a>
-                                    <div class="dropdown">
-                                        <!--<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    <!--<div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style="color: white;margin-top: 5px; padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 0">
                                             {{ \App\CPU\translate('Seller')}}  {{ \App\CPU\translate('zone')}}
@@ -635,10 +588,63 @@
                                             <a class="dropdown-item" href="{{route('seller.auth.login')}}">
                                                 {{ \App\CPU\translate('Seller')}}  {{ \App\CPU\translate('login')}}
                                             </a>
-                                        </div>-->
-                                    </div>
+                                        </div>
+                                    </div>-->
                                 </li>
                             @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://yeapcart.shiprocket.co">
+                                    Track Order
+                                </a>
+                            </li>
+                            @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
+                            @if($currency_model=='multi_currency')
+                                <div class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
+                                    <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <span>{{session('currency_code')}} {{session('currency_symbol')}}</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
+                                        style="min-width: 160px!important;text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                        @foreach (\App\Model\Currency::where('status', 1)->get() as $key => $currency)
+                                            <li style="cursor: pointer" class="dropdown-item"
+                                                onclick="currency_change('{{$currency['code']}}')">
+                                                {{ $currency->name }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @php( $local = \App\CPU\Helpers::default_lang())
+                            <div
+                                class="topbar-text dropdown disable-autohide  text-capitalize">
+                                <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    @foreach(json_decode($language['value'],true) as $data)
+                                        @if($data['code']==$local)
+                                            <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}" width="20"
+                                                 src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                 alt="Eng">
+                                            {{$data['name']}}
+                                        @endif
+                                    @endforeach
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
+                                    style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                    @foreach(json_decode($language['value'],true) as $key =>$data)
+                                        @if($data['status']==1)
+                                            <li>
+                                                <a class="dropdown-item pb-1" href="{{route('lang',[$data['code']])}}">
+                                                    <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                         width="20"
+                                                         src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                         alt="{{$data['name']}}"/>
+                                                    <span style="text-transform: capitalize">{{$data['name']}}</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
                     </ul>
                 </div>
