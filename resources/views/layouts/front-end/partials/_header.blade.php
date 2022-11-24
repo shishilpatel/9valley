@@ -123,27 +123,27 @@
 
 <header class="box-shadow-sm rtl">
     <!-- Topbar-->
-    <div class="topbar" style="background-color:{{$web_config['primary_color']}}">
-        <div class="container">
+{{--    <div class="topbar" style="background-color:{{$web_config['primary_color']}}">--}}
+{{--        <div class="container">--}}
 
-            <div>
-                <div class="topbar-text dropdown d-md-none {{Session::get('direction') === "rtl" ? 'mr-auto' : 'ml-auto'}}">
-                    <a class="topbar-link" href="tel: {{$web_config['phone']->value}}">
-                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
-                    </a>
-                </div>
-                <div class="d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}} text-nowrap">
-                    <a class="topbar-link d-none d-md-inline-block" href="tel:{{$web_config['phone']->value}}">
-                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
-                    </a>
-                </div>
-            </div>
+{{--            <div>--}}
+{{--                <div class="topbar-text dropdown d-md-none {{Session::get('direction') === "rtl" ? 'mr-auto' : 'ml-auto'}}">--}}
+{{--                    <a class="topbar-link" href="tel: {{$web_config['phone']->value}}">--}}
+{{--                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}} text-nowrap">--}}
+{{--                    <a class="topbar-link d-none d-md-inline-block" href="tel:{{$web_config['phone']->value}}">--}}
+{{--                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div>
+{{--            <div>--}}
 
-            </div>
-        </div>
-    </div>
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
     <div class="navbar-sticky bg-light1 mobile-head" style="background-color:#fcb800">
@@ -599,7 +599,7 @@
                             </li>
                             @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
                             @if($currency_model=='multi_currency')
-                                <div class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
+                                <div style="margin-top: 18px" class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
                                     <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                                         <span>{{session('currency_code')}} {{session('currency_symbol')}}</span>
                                     </a>
@@ -616,7 +616,7 @@
                             @endif
 
                             @php( $local = \App\CPU\Helpers::default_lang())
-                            <div
+                            <div style="margin-top: 18px"
                                 class="topbar-text dropdown disable-autohide  text-capitalize">
                                 <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                                     @foreach(json_decode($language['value'],true) as $data)
@@ -645,6 +645,12 @@
                                     @endforeach
                                 </ul>
                             </div>
+
+                            <li class="nav-item">
+                                <a class="topbar-link d-none d-md-inline-block" href="tel:{{$web_config['phone']->value}}">
+                                    <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </div>
