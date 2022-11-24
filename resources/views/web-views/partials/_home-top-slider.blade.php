@@ -17,7 +17,7 @@
         <div ></div>
     </div>
 
-    <div class="col-xl-9 col-md-12" style="margin-top: 3px;{{Session::get('direction') === "rtl" ? 'padding-right:10px;' : 'padding-left:10px;'}}">
+    <div class="col-xl-9 col-md-12" style="margin-top: 25px;{{Session::get('direction') === "rtl" ? 'padding-right:10px;' : 'padding-left:10px;'}}">
         @php($main_banner=\App\Model\Banner::where('banner_type','Main Banner')->where('published',1)->orderBy('id','desc')->get())
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -51,7 +51,7 @@
             </a>
         </div>
 
-        
+
     </div>
     <!-- Banner group-->
 </div>
