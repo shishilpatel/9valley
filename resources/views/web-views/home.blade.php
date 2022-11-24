@@ -294,7 +294,7 @@
             }
             .recomanded-buy-button {
                 text-align: center;
-                margin-top: 30px;
+                /*margin-top: 30px;*/
             }
         }
         @media(min-width:801px){
@@ -327,7 +327,7 @@
             }
             .recomanded-buy-button {
                 text-align: center;
-                margin-top: 63px;
+                /*margin-top: 63px;*/
             }
 
         }
@@ -713,7 +713,7 @@
                                                 {{\App\CPU\Helpers::currency_converter($deal_of_the_day->product->unit_price)}}
                                             </strike>
                                         @endif
-                                        <span class="text-accent" style="margin: 10px;font-size: 22px !important;">
+                                        <span class="text-accent" style="margin: 10px;font-size: 22px !important;color:#000">
                                             {{\App\CPU\Helpers::currency_converter(
                                                 $deal_of_the_day->product->unit_price-(\App\CPU\Helpers::get_product_discount($deal_of_the_day->product,$deal_of_the_day->product->unit_price))
                                             )}}
