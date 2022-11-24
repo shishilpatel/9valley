@@ -78,7 +78,7 @@
         }
 
         .navbar-light .navbar-tool-icon-box {
-            color: {{$web_config['primary_color']}};
+            color: "#000";
         }
 
         .search_button {
@@ -87,7 +87,7 @@
         }
 
         .nav-link {
-            color: white !important;
+            /*color: white !important;*/
         }
 
         .navbar-stuck-menu {
@@ -98,7 +98,7 @@
         }
 
         .mega-nav {
-            background: white;
+            /*background: white;*/
             position: relative;
             margin-top: 6px;
             line-height: 17px;

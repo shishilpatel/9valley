@@ -1,7 +1,7 @@
 {{--code improved Md. Al imrun Khandakar--}}
 <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
      style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 6px">
-    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
+    <a class="navbar-tool-icon-box bg-secondary1 dropdown-toggle" href="{{route('shop-cart')}}">
         <span class="navbar-tool-label">
             @php($cart=\App\CPU\CartManager::get_cart())
             {{$cart->count()}}

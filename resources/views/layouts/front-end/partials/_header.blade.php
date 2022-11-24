@@ -194,14 +194,14 @@
 
 
     <div class="navbar-sticky bg-light1 mobile-head" style="background-color:#ffc107">
-        <div class="navbar navbar-expand-md navbar-light">
+        <div class="navbar navbar-expand-md navbar-light" style="border-bottom:1px solid rgba(0, 0, 0, 0.15)">
             <div class="container ">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand d-none d-sm-block {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}} flex-shrink-0"
                    href="{{route('home')}}"
-                   style="min-width: 7rem;">
+                   style="min-width: 300px;"> <!-- -->
                     <img style="height: 40px!important; width:auto;"
                          src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
                          onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
@@ -246,7 +246,8 @@
                         </div>
                     </a>
                     <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
-                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
+                        <!--bg-secondary-->
+                        <a class="navbar-tool-icon-box dropdown-toggle" href="{{route('wishlists')}}">
                             <span class="navbar-tool-label">
                                 <span
                                     class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>
@@ -258,7 +259,7 @@
                         <div class="dropdown">
                             <a class="navbar-tool ml-2 mr-2 " type="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
+                                <div class="navbar-tool-icon-box">
                                     <div class="navbar-tool-icon-box bg-secondary">
                                         <img style="width: 40px;height: 40px"
                                              src="{{asset('storage/app/public/profile/'.auth('customer')->user()->image)}}"
@@ -286,8 +287,8 @@
                             <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
                                type="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
-                                    <div class="navbar-tool-icon-box bg-secondary">
+                                <div class="navbar-tool-icon-box bg-secondary1">
+                                    <div class="navbar-tool-icon-box bg-secondary1">
                                         <i class="navbar-tool-icon czi-user"></i>
                                     </div>
                                 </div>
@@ -320,14 +321,14 @@
                         <form action="{{route('products')}}" type="submit" class="search_form">
                             <input class="form-control appended-form-control search-bar-input-mobile" type="text"
                                    autocomplete="off"
-                                   placeholder="{{\App\CPU\translate('search')}}" name="name">
+                                   placeholder="I'm shopping for..." name="name">
                             <input name="data_from" value="search" hidden>
                             <input name="page" value="1" hidden>
                             <button class="input-group-append-overlay search_button" type="submit"
-                                    style="border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};">
-                            <span class="input-group-text" style="font-size: 20px;">
-                                <i class="czi-search text-white"></i>
-                            </span>
+                                    style="color:#fff;background:#000;padding: 1% 3% 4% 3%;border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};">Search
+{{--                            <span class="input-group-text" style="font-size: 20px;">--}}
+{{--                                <i class="czi-search text-white"></i>--}}
+{{--                            </span>--}}
                             </button>
                             <diV class="card search-card"
                                  style="position: absolute;background: white;z-index: 999;width: 100%;display: none">
