@@ -290,7 +290,10 @@
                 {{Session::get('direction') === "rtl" ? 'margin-left: -7px;' : 'margin-right: 5px;'}}
             }
             .recomanded-product-card {
-                background: #F8FBFD;margin:20px;height: 535px; border-radius: 5px;
+                background: #F8FBFD;
+                margin:20px;
+                /*height: 535px; */
+                border-radius: 5px;
             }
             .recomanded-buy-button {
                 text-align: center;
@@ -324,7 +327,9 @@
                 {{Session::get('direction') === "rtl" ? 'margin-left: -20px;' : 'margin-right: 0px;'}}
             }
             .recomanded-product-card {
-                background: #F8FBFD;margin:20px;height: 475px; border-radius: 5px;
+                background: #F8FBFD;margin:20px;
+                /*height: 475px; */
+                border-radius: 5px;
             }
             .recomanded-buy-button {
                 text-align: center;
