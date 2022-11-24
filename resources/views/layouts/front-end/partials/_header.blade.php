@@ -284,6 +284,9 @@
                             </div>
                         </div>
                     @else
+                        <div id="cart_items">
+                            @include('layouts.front-end.partials.cart')
+                        </div>
                         <div class="ps-block--user-header" style="padding-left: 10px;">
                             <div class="ps-block__left" style="float: left">
                                 <i class="navbar-tool-icon czi-user" style="padding-right: 10px"></i>
@@ -315,9 +318,7 @@
                             </div>
                         </div>-->
                     @endif
-                    <div id="cart_items">
-                        @include('layouts.front-end.partials.cart')
-                    </div>
+
                 </div>
             </div>
         </div>
