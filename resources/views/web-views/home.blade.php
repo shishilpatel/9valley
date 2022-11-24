@@ -692,7 +692,7 @@
 
                                     @php($overallRating = \App\CPU\ProductManager::get_overall_rating($deal_of_the_day->product['reviews']))
                                     <div class="rating-show" style="height:125px; ">
-                                        <h5 style="font-weight: 600; color: #fff">
+                                        <h5 style="font-weight: 600;">
                                             {{\Illuminate\Support\Str::limit($deal_of_the_day->product['name'],30)}}
                                         </h5>
                                         <span class="d-inline-block font-size-sm text-body">
@@ -1009,8 +1009,7 @@
                         <div class="row ml-2 mr-3 mb-2">
                             @foreach($bestSellProduct as $key=>$bestSell)
                                 @if($bestSell->product && $key<3)
-                                    <div class="col-12 m-1" style="border-style: solid;
-                                    border-color: #0000000d; border-radius:5px;"
+                                    <div class="col-12 m-1" style=""
                                          data-href="{{route('product',$bestSell->product->slug)}}">
                                          @if($bestSell->product->discount > 0)
                                                 <div class="d-flex" style="top:0;position:absolute;{{Session::get('direction') === "rtl" ? 'right:0;' : 'left:0;'}}">
@@ -1096,8 +1095,7 @@
                         <div class="row ml-2 mr-3 mb-2">
                             @foreach($topRated as $key=>$top)
                                 @if($top->product && $key<3)
-                                    <div class="col-12 m-1" style="border-style: solid;
-                                    border-color: #0000000d; border-radius:5px;"
+                                    <div class="col-12 m-1" style=""
                                          data-href="{{route('product',$top->product->slug)}}">
                                          @if($top->product->discount > 0)
                                                 <div class="d-flex" style="top:0;position:absolute;{{Session::get('direction') === "rtl" ? 'right:0;' : 'left:0;'}}">

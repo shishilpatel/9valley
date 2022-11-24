@@ -1,6 +1,6 @@
 @if(isset($product))
     @php($overallRating = \App\CPU\ProductManager::get_overall_rating($product->reviews))
-    <div class="flash_deal_product rtl" style="border:#0000000d 1px solid;cursor: pointer; height:150px;{{Session::get('direction') === "rtl" ? 'margin-right:6px;' : 'margin-left:6px;'}}"
+    <div class="flash_deal_product rtl" style=""
          onclick="location.href='{{route('product',$product->slug)}}'">
         @if($product->discount > 0)
         <div class="d-flex" style="top:0;position:absolute;">

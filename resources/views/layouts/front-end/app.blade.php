@@ -482,7 +482,7 @@
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             font-size: 18px;
-            color: {{$web_config['primary_color']}};
+            color: #fff;
         }
 
         a:hover {
