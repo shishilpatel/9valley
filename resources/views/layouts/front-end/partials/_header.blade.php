@@ -363,7 +363,7 @@
                             </a>
                             @if(request()->is('/'))
                                 <ul class="dropdown-menu" style="right: 0%; display: block!important;
-                                    margin-top: 8px; margin-right: 30px;
+                                    margin-top: 30px; margin-right: 11px;
                                     min-width: 303px !important;{{Session::get('direction') === "rtl" ? 'margin-right: 1px!important;text-align: right;' : 'margin-left: 1px!important;text-align: left;'}}padding-bottom: 0px!important;">
                                     @foreach($categories as $key=>$category)
                                         @if($key<8)
