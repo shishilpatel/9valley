@@ -100,6 +100,12 @@
             padding-bottom: 0;
         }
 
+        footer.page-footer * {
+            color: black;
+        }
+        ul.widget-list * {
+            color: #000 !important;
+        }
         .mega-nav {
             /*background: white;*/
             position: relative;
@@ -114,7 +120,7 @@
             color: {{$web_config['primary_color']}}                           !important;
             font-size: 20px;
             font-weight: 600;
-            padding-left: 20px !important;
+            /*padding-left: 20px !important;*/
         }
 
         .nav-item .dropdown-toggle::after {

@@ -123,7 +123,7 @@
 
 <header class="box-shadow-sm rtl">
     <!-- Topbar-->
-    <div class="topbar" style="background-color:#ffc107">
+    <div class="topbar" style="background-color:{{$web_config['primary_color']}}">
         <div class="container">
 
             <div>
@@ -193,7 +193,7 @@
     </div>
 
 
-    <div class="navbar-sticky bg-light1 mobile-head" style="background-color:#ffc107">
+    <div class="navbar-sticky bg-light1 mobile-head" style="background-color:#fcb800">
         <div class="navbar navbar-expand-md navbar-light" style="border-bottom:1px solid rgba(0, 0, 0, 0.15)">
             <div class="container ">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -565,48 +565,49 @@
                     </ul>
                     <!-- Primary menu-->
                     <ul class="navbar-nav" style="{{Session::get('direction') === "rtl" ? 'padding-right: 0px' : ''}}">
-                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
-                            <a class="nav-link" href="{{route('home')}}">{{ \App\CPU\translate('Home')}}</a>
-                        </li>
+{{--                        <li class="nav-item dropdown {{request()->is('/')?'active':''}}">--}}
+{{--                            <a class="nav-link" href="{{route('home')}}">{{ \App\CPU\translate('Home')}}</a>--}}
+{{--                        </li>--}}
 
-                        @if(\App\Model\BusinessSetting::where(['type'=>'product_brand'])->first()->value)
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"
-                               data-toggle="dropdown">{{ \App\CPU\translate('brand') }}</a>
-                            <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} scroll-bar"
-                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                @foreach(\App\CPU\BrandManager::get_active_brands() as $brand)
-                                    <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:space-between; ">
-                                        <div>
-                                            <a class="dropdown-item"
-                                               href="{{route('products',['id'=> $brand['id'],'data_from'=>'brand','page'=>1])}}">
-                                                {{$brand['name']}}
-                                            </a>
-                                        </div>
-                                        <div class="align-baseline">
-                                            @if($brand['brand_products_count'] > 0 )
-                                                <span class="count-value px-2">( {{ $brand['brand_products_count'] }} )</span>
-                                            @endif
-                                        </div>
-                                    </li>
-                                @endforeach
-                                <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:center;">
-                                    <div>
-                                        <a class="dropdown-item" href="{{route('brands')}}"
-                                        style="color: {{$web_config['primary_color']}} !important;">
-                                            {{ \App\CPU\translate('View_more') }}
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        @endif
-                        @php($discount_product = App\Model\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
-                        @if ($discount_product>0)
-                            <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
-                                <a class="nav-link text-capitalize" href="{{route('products',['data_from'=>'discounted','page'=>1])}}">{{ \App\CPU\translate('discounted_products')}}</a>
-                            </li>
-                        @endif
+{{--                        @if(\App\Model\BusinessSetting::where(['type'=>'product_brand'])->first()->value)--}}
+{{--                        <li class="nav-item dropdown">--}}
+{{--                            <a class="nav-link dropdown-toggle" href="#"--}}
+{{--                               data-toggle="dropdown">{{ \App\CPU\translate('brand') }}</a>--}}
+{{--                            <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} scroll-bar"--}}
+{{--                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">--}}
+{{--                                @foreach(\App\CPU\BrandManager::get_active_brands() as $brand)--}}
+{{--                                    <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:space-between; ">--}}
+{{--                                        <div>--}}
+{{--                                            <a class="dropdown-item"--}}
+{{--                                               href="{{route('products',['id'=> $brand['id'],'data_from'=>'brand','page'=>1])}}">--}}
+{{--                                                {{$brand['name']}}--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="align-baseline">--}}
+{{--                                            @if($brand['brand_products_count'] > 0 )--}}
+{{--                                                <span class="count-value px-2">( {{ $brand['brand_products_count'] }} )</span>--}}
+{{--                                            @endif--}}
+{{--                                        </div>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+{{--                                <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:center;">--}}
+{{--                                    <div>--}}
+{{--                                        <a class="dropdown-item" href="{{route('brands')}}"--}}
+{{--                                        style="color: {{$web_config['primary_color']}} !important;">--}}
+{{--                                            {{ \App\CPU\translate('View_more') }}--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        @endif--}}
+
+{{--                        @php($discount_product = App\Model\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())--}}
+{{--                        @if ($discount_product>0)--}}
+{{--                            <li class="nav-item dropdown {{request()->is('/')?'active':''}}">--}}
+{{--                                <a class="nav-link text-capitalize" href="{{route('products',['data_from'=>'discounted','page'=>1])}}">{{ \App\CPU\translate('discounted_products')}}</a>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
 
                         @php($business_mode=\App\CPU\Helpers::get_business_settings('business_mode'))
                         @if ($business_mode == 'multi')
@@ -617,7 +618,7 @@
                             @php($seller_registration=\App\Model\BusinessSetting::where(['type'=>'seller_registration'])->first()->value)
                             @if($seller_registration)
                                 <li class="nav-item dropdown">
-				    <a class="nav-link" href="{{route('shop.apply')}}">
+				                    <a class="nav-link" href="{{route('shop.apply')}}">
                                         Sell on YeapCart
                                     </a>
                                     <div class="dropdown">

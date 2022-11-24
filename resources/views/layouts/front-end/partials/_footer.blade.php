@@ -4,7 +4,7 @@
         color: {{$web_config['secondary_color']}} !important;
     }
     .widget-list-link{
-        color: white !important;
+        color: #000 !important;
     }
 
     .widget-list-link:hover{
@@ -62,9 +62,9 @@
     }
     @media only screen and (max-width: 800px) {
         .end-footer{
-            
+
             display: block;
-            
+
             align-items: center;
         }
     }
@@ -90,11 +90,11 @@
                             alt="">
                 </div>
                 <div style="text-align: center;">
-                    
+
                         <p>
                             {{ \App\CPU\translate('About Company')}}
                         </p>
-                    
+
                 </div>
             </a>
         </div>
@@ -137,7 +137,7 @@
 
 <footer class="page-footer font-small mdb-colorrtl">
     <!-- Footer Links -->
-    <div style="background:{{$web_config['primary_color']}}20;padding-top:30px;">
+    <div style="background:{{$web_config['primary_color']}};padding-top:30px;">
         <div class="container text-center" style="padding-bottom: 13px;">
 
             <!-- Footer links -->
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-md-9" >
                     <div class="row">
-                        
+
                         <div class="col-md-3 footer-padding-bottom" >
                             <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('special')}}</h6>
                             <ul class="widget-list" style="padding-bottom: 10px">
@@ -179,7 +179,7 @@
                                 <li class="widget-list-item"><a class="widget-list-link"
                                                                 href="{{route('products',['data_from'=>'top-rated','page'=>1])}}">{{\App\CPU\translate('top_rated_product')}}</a>
                                 </li>
-    
+
                             </ul>
                         </div>
                         <div class="col-md-4 footer-padding-bottom" style="{{Session::get('direction') === "rtl" ? 'padding-right:20px;' : ''}}">
@@ -192,14 +192,14 @@
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{route('wishlists')}}">{{\App\CPU\translate('wish_list')}}</a>
                                     </li>
-                                    
+
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
                                     </li>
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{ route('account-address') }}">{{\App\CPU\translate('address')}}</a>
                                     </li>
-                                    
+
                                 </ul>
                             @else
                                 <ul class="widget-list" style="padding-bottom: 10px">
@@ -209,22 +209,22 @@
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{route('customer.auth.login')}}">{{\App\CPU\translate('wish_list')}}</a>
                                     </li>
-                                    
+
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
                                     </li>
                                     <li class="widget-list-item"><a class="widget-list-link"
                                                                     href="{{route('customer.auth.login')}}">{{\App\CPU\translate('address')}}</a>
                                     </li>
-                                    
-                                    
+
+
                                 </ul>
                             @endif
                         </div>
                         <div class="col-md-5 footer-padding-bottom" >
                                 @php($ios = \App\CPU\Helpers::get_business_settings('download_app_apple_stroe'))
                                 @php($android = \App\CPU\Helpers::get_business_settings('download_app_google_stroe'))
-            
+
                                 @if($ios['status'] || $android['status'])
                                     <div class="d-flex justify-content-center">
                                         <h6 class="text-uppercase font-weight-bold footer-heder align-items-center">
@@ -232,8 +232,8 @@
                                         </h6>
                                     </div>
                                 @endif
-            
-            
+
+
                                 <div class="store-contents d-flex justify-content-center" >
                                     @if($ios['status'])
                                         <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
@@ -243,7 +243,7 @@
                                             </a>
                                         </div>
                                     @endif
-            
+
                                     @if($android['status'])
                                         <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
                                             <a href="{{ $android['link'] }}" role="button">
@@ -286,7 +286,7 @@
                                         <a class="widget-list-link" href="tel: {{$web_config['phone']->value}}">
                                             <span ><i class="fa fa-phone m-2"></i>{{\App\CPU\Helpers::get_business_settings('company_phone')}} </span>
                                         </a>
-                                        
+
                                     </div>
                                     <div style=""class="">
                                         <a class="widget-list-link" href="email:">
@@ -322,16 +322,16 @@
                         </div>
                     </div>
                 </div>
-                
-    
-                
+
+
+
                 <!-- Grid column -->
             </div>
             <!-- Footer links -->
         </div>
     </div>
 
-    
+
     <!-- Grid row -->
     <div style="background: {{$web_config['primary_color']}}10;">
         <div class="container">
@@ -362,7 +362,7 @@
                             {{\App\CPU\translate('privacy_policy')}}
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
