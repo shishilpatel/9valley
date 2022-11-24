@@ -476,7 +476,7 @@
 
 @php($decimal_point_settings = !empty(\App\CPU\Helpers::get_business_settings('decimal_point_settings')) ? \App\CPU\Helpers::get_business_settings('decimal_point_settings') : 0)
     <!-- Hero (Banners + Slider)-->
-    <section class="bg-transparent mb-3">
+    <section class="bg-transparent1 mb-3">
         <div class="container">
             <div class="row ">
                 <div class="col-12">

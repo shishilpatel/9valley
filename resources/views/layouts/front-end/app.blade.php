@@ -47,7 +47,7 @@
     <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
     <style>
         body {
-            background-color: #f7f8fa94;
+            background-color: #eeeeee !important;
         }
         ul.dropdown-menu .dropdown:hover {
             background: #fcb800;
