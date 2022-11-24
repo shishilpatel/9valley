@@ -599,7 +599,7 @@
                             </li>
                             @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
                             @if($currency_model=='multi_currency')
-                                <div style="margin-top: 18px" class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
+                                <div style="padding-top: 1.125rem;padding-bottom: 0.875rem;" class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
                                     <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                                         <span>{{session('currency_code')}} {{session('currency_symbol')}}</span>
                                     </a>
@@ -616,7 +616,7 @@
                             @endif
 
                             @php( $local = \App\CPU\Helpers::default_lang())
-                            <div style="margin-top: 18px"
+                            <div style="padding-top: 1.125rem;padding-bottom: 0.875rem;"
                                 class="topbar-text dropdown disable-autohide  text-capitalize">
                                 <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                                     @foreach(json_decode($language['value'],true) as $data)
@@ -647,7 +647,7 @@
                             </div>
 
                             <li class="nav-item">
-                                <a class="topbar-link d-none d-md-inline-block" href="tel:{{$web_config['phone']->value}}">
+                                <a style="padding-top: 1.125rem;padding-bottom: 0.875rem;padding-left: 15rem;" class="topbar-link d-none d-md-inline-block" href="https://wa.link/m6l4fr">
                                     <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
                                 </a>
                             </li>
