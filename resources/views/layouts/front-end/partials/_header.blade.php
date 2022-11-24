@@ -58,7 +58,7 @@
         }
 
         .search_button .input-group-text i {
-            color: {{$web_config['primary_color']}}                               !important;
+            color: {{$web_config['primary_color']}}                              !important;
         }
 
         .navbar-expand-md .dropdown-menu > .dropdown > .dropdown-toggle {
@@ -68,12 +68,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                               !important;
+            color: {{$web_config['primary_color']}}                              !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                               !important;
+            color: {{$web_config['primary_color']}}                              !important;
         }
     }
 
@@ -96,29 +96,27 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                               !important;
+            color: {{$web_config['primary_color']}}                              !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}  !important;
+            color: {{$web_config['primary_color']}} !important;
         }
     }
-
     #anouncement {
         width: 100%;
         padding: 2px 0;
         text-align: center;
-        color: white;
+        color:white;
     }
 </style>
 @php($announcement=\App\CPU\Helpers::get_business_settings('announcement'))
 @if (isset($announcement) && $announcement['status']==1)
-    <div class="d-flex justify-content-between align-items-center" id="anouncement"
-         style="background-color: {{ $announcement['color'] }};color:{{$announcement['text_color']}}">
+    <div class="d-flex justify-content-between align-items-center" id="anouncement" style="background-color: {{ $announcement['color'] }};color:{{$announcement['text_color']}}">
         <span></span>
         <span style="text-align:center; font-size: 15px;">{{ $announcement['announcement'] }} </span>
-        <span class="ml-3 mr-3" style="font-size: 12px;cursor: pointer;color: darkred" onclick="myFunction()">X</span>
+        <span class="ml-3 mr-3" style="font-size: 12px;cursor: pointer;color: darkred"  onclick="myFunction()">X</span>
     </div>
 @endif
 
@@ -129,8 +127,7 @@
         <div class="container">
 
             <div>
-                <div
-                    class="topbar-text dropdown d-md-none {{Session::get('direction') === "rtl" ? 'mr-auto' : 'ml-auto'}}">
+                <div class="topbar-text dropdown d-md-none {{Session::get('direction') === "rtl" ? 'mr-auto' : 'ml-auto'}}">
                     <a class="topbar-link" href="tel: {{$web_config['phone']->value}}">
                         <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
                     </a>
@@ -145,8 +142,7 @@
             <div>
                 @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
                 @if($currency_model=='multi_currency')
-                    <div
-                        class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
+                    <div class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
                         <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                             <span>{{session('currency_code')}} {{session('currency_symbol')}}</span>
                         </a>
@@ -228,10 +224,10 @@
                                name="name">
                         <button class="input-group-append-overlay search_button" type="submit"
                                 style="padding:1.5% 3% 0% 3%;border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};top:0">
-                            Search
-                            {{--                                <span class="input-group-text" style="font-size: 20px;">--}}
-                            {{--                                    <i class="czi-search text-white"></i>--}}
-                            {{--                                </span>--}}
+                                Search
+{{--                                <span class="input-group-text" style="font-size: 20px;">--}}
+{{--                                    <i class="czi-search text-white"></i>--}}
+{{--                                </span>--}}
                         </button>
                         <input name="data_from" value="search" hidden>
                         <input name="page" value="1" hidden>
@@ -288,16 +284,16 @@
                             </div>
                         </div>
                     @else
-                        <div class="ps-block--user-header">
-                            <div class="ps-block__left">
-                                <i class="navbar-tool-icon czi-user"></i>
+                        <div class="ps-block--user-header" style="padding-left: 10px;">
+                            <div class="ps-block__left" style="float: left">
+                                <i class="navbar-tool-icon czi-user" style="padding-right: 10px"></i>
                             </div>
                             <div class="ps-block__right">
                                 <a href="{{route('customer.auth.login')}}">Login</a>
                                 <a href="{{route('customer.auth.sign-up')}}">Register</a>
                             </div>
                         </div>
-                        <!-- <div class="dropdown">
+                       <!-- <div class="dropdown">
                             <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
                                type="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
@@ -311,13 +307,13 @@
                                  style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                 <a class="dropdown-item" href="{{route('customer.auth.login')}}">
                                     <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('sign_in')}}
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{route('customer.auth.sign-up')}}">
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('customer.auth.sign-up')}}">
                                     <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('sign_up')}}
-                        </a>
-                    </div>
-                </div>-->
+                                </a>
+                            </div>
+                        </div>-->
                     @endif
                     <div id="cart_items">
                         @include('layouts.front-end.partials.cart')
@@ -325,10 +321,10 @@
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-expand-md navbar-stuck-menu">
+        <div class="navbar navbar-expand-md navbar-stuck-menu"  >
             <div class="container" style="padding-left: 10px;padding-right: 10px;">
                 <div class="collapse navbar-collapse" id="navbarCollapse"
-                     style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}; ">
+                    style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}; ">
 
                     <!-- Search-->
                     <div class="input-group-overlay d-md-none my-3">
@@ -339,11 +335,10 @@
                             <input name="data_from" value="search" hidden>
                             <input name="page" value="1" hidden>
                             <button class="input-group-append-overlay search_button" type="submit"
-                                    style="color:#fff;background:#000;padding: 1% 3% 4% 3%;border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};">
-                                Search
-                                {{--                            <span class="input-group-text" style="font-size: 20px;">--}}
-                                {{--                                <i class="czi-search text-white"></i>--}}
-                                {{--                            </span>--}}
+                                    style="color:#fff;background:#000;padding: 1% 3% 4% 3%;border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};">Search
+{{--                            <span class="input-group-text" style="font-size: 20px;">--}}
+{{--                                <i class="czi-search text-white"></i>--}}
+{{--                            </span>--}}
                             </button>
                             <diV class="card search-card"
                                  style="position: absolute;background: white;z-index: 999;width: 100%;display: none">
@@ -374,7 +369,7 @@
                                         @if($key<8)
                                             <li class="dropdown">
                                                 <a class="dropdown-item flex-between"
-                                                   <?php if ($category->childes->count() > 0) echo "data-toggle='dropdown'" ?> href="javascript:"
+                                                   <?php if ($category->childes->count() > 0) echo "data-toggle='dropdown'"?> href="javascript:"
                                                    onclick="location.href='{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}'">
                                                     <div>
                                                         <img
@@ -386,8 +381,7 @@
                                                     </div>
                                                     @if ($category->childes->count() > 0)
                                                         <div>
-                                                            <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                               style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
+                                                            <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
                                                         </div>
                                                     @endif
                                                 </a>
@@ -397,7 +391,7 @@
                                                         @foreach($category['childes'] as $subCategory)
                                                             <li class="dropdown">
                                                                 <a class="dropdown-item flex-between"
-                                                                   <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown'" ?> href="javascript:"
+                                                                   <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown'"?> href="javascript:"
                                                                    onclick="location.href='{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}'">
                                                                     <div>
                                                                         <span
@@ -405,8 +399,7 @@
                                                                     </div>
                                                                     @if ($subCategory->childes->count() > 0)
                                                                         <div>
-                                                                            <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                                               style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
+                                                                            <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
                                                                         </div>
                                                                     @endif
                                                                 </a>
@@ -432,8 +425,7 @@
                                        style="color: {{$web_config['primary_color']}} !important;{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 29%">
                                         {{\App\CPU\translate('view_more')}}
 
-                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                           style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
+                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
                                     </a>
 
                                 </ul>
@@ -443,7 +435,7 @@
                                     @foreach($categories as $category)
                                         <li class="dropdown">
                                             <a class="dropdown-item flex-between <?php if ($category->childes->count() > 0) echo "data-toggle='dropdown"?> "
-                                               <?php if ($category->childes->count() > 0) echo "data-toggle='dropdown'" ?> href="javascript:"
+                                               <?php if ($category->childes->count() > 0) echo "data-toggle='dropdown'"?> href="javascript:"
                                                onclick="location.href='{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}'">
                                                 <div>
                                                     <img src="{{asset("storage/app/public/category/$category->icon")}}"
@@ -454,8 +446,7 @@
                                                 </div>
                                                 @if ($category->childes->count() > 0)
                                                     <div>
-                                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                           style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
+                                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
                                                     </div>
                                                 @endif
                                             </a>
@@ -465,7 +456,7 @@
                                                     @foreach($category['childes'] as $subCategory)
                                                         <li class="dropdown">
                                                             <a class="dropdown-item flex-between <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown"?> "
-                                                               <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown'" ?> href="javascript:"
+                                                               <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown'"?> href="javascript:"
                                                                onclick="location.href='{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}'">
                                                                 <div>
                                                                     <span
@@ -473,8 +464,7 @@
                                                                 </div>
                                                                 @if ($subCategory->childes->count() > 0)
                                                                     <div>
-                                                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                                           style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
+                                                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:#4B5864;"></i>
                                                                     </div>
                                                                 @endif
                                                             </a>
@@ -499,8 +489,7 @@
                                        style="color: {{$web_config['primary_color']}} !important;{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 29%">
                                         {{\App\CPU\translate('view_more')}}
 
-                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                           style="font-size: 8px !important;background:none !important;color:{{$web_config['primary_color']}} !important;"></i>
+                                        <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}" style="font-size: 8px !important;background:none !important;color:{{$web_config['primary_color']}} !important;"></i>
                                     </a>
                                 </ul>
                             @endif
@@ -520,10 +509,10 @@
                                 @foreach($categories as $category)
                                     <li class="dropdown">
 
-                                        <a style="font-family:  sans-serif !important;font-size: 1rem;
+                                            <a style="font-family:  sans-serif !important;font-size: 1rem;
                                             font-weight: 300;line-height: 1.5;"
-                                           <?php if ($category->childes->count() > 0) echo "" ?>
-                                           href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                                           <?php if ($category->childes->count() > 0) echo ""?>
+                                            href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                             <img src="{{asset("storage/app/public/category/$category->icon")}}"
                                                  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                  style="width: 18px; height: 18px; ">
@@ -532,9 +521,9 @@
 
                                         </a>
                                         @if ($category->childes->count() > 0)
-                                            <a data-toggle='dropdown' style="margin-left:50px;">
+                                            <a  data-toggle='dropdown' style="margin-left:50px;">
                                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                   style="font-size: 10px !important;background:none !important;color:#4B5864;font:bold;"></i>
+                                                style="font-size: 10px !important;background:none !important;color:#4B5864;font:bold;"></i>
                                             </a>
                                         @endif
 
@@ -543,17 +532,16 @@
                                                 style="right: 10%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                                 @foreach($category['childes'] as $subCategory)
                                                     <li class="dropdown">
-                                                        <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">
+                                                        <a  href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">
                                                             <span
                                                                 class="{{Session::get('direction') === "rtl" ? 'pr-3' : 'pl-3'}}">{{$subCategory['name']}}</span>
                                                         </a>
 
                                                         @if($subCategory->childes->count()>0)
-                                                            <a style="font-family:  sans-serif !important;font-size: 1rem;
-                                                            font-weight: 300;line-height: 1.5;margin-left:50px;"
-                                                               data-toggle='dropdown'>
+                                                        <a style="font-family:  sans-serif !important;font-size: 1rem;
+                                                            font-weight: 300;line-height: 1.5;margin-left:50px;" data-toggle='dropdown'>
                                                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
-                                                                   style="font-size: 10px !important;background:none !important;color:#4B5864;font:bold;"></i>
+                                                                style="font-size: 10px !important;background:none !important;color:#4B5864;font:bold;"></i>
                                                             </a>
                                                             <ul class="dropdown-menu"
                                                                 style="right: 100%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -581,42 +569,41 @@
                         </li>
 
                         @if(\App\Model\BusinessSetting::where(['type'=>'product_brand'])->first()->value)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#"
-                                   data-toggle="dropdown">{{ \App\CPU\translate('brand') }}</a>
-                                <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} scroll-bar"
-                                    style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                    @foreach(\App\CPU\BrandManager::get_active_brands() as $brand)
-                                        <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:space-between; ">
-                                            <div>
-                                                <a class="dropdown-item"
-                                                   href="{{route('products',['id'=> $brand['id'],'data_from'=>'brand','page'=>1])}}">
-                                                    {{$brand['name']}}
-                                                </a>
-                                            </div>
-                                            <div class="align-baseline">
-                                                @if($brand['brand_products_count'] > 0 )
-                                                    <span class="count-value px-2">( {{ $brand['brand_products_count'] }} )</span>
-                                                @endif
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                    <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:center;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#"
+                               data-toggle="dropdown">{{ \App\CPU\translate('brand') }}</a>
+                            <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} scroll-bar"
+                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                @foreach(\App\CPU\BrandManager::get_active_brands() as $brand)
+                                    <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:space-between; ">
                                         <div>
-                                            <a class="dropdown-item" href="{{route('brands')}}"
-                                               style="color: {{$web_config['primary_color']}} !important;">
-                                                {{ \App\CPU\translate('View_more') }}
+                                            <a class="dropdown-item"
+                                               href="{{route('products',['id'=> $brand['id'],'data_from'=>'brand','page'=>1])}}">
+                                                {{$brand['name']}}
                                             </a>
                                         </div>
+                                        <div class="align-baseline">
+                                            @if($brand['brand_products_count'] > 0 )
+                                                <span class="count-value px-2">( {{ $brand['brand_products_count'] }} )</span>
+                                            @endif
+                                        </div>
                                     </li>
-                                </ul>
-                            </li>
+                                @endforeach
+                                <li style="border-bottom: 1px solid #e3e9ef; display:flex; justify-content:center;">
+                                    <div>
+                                        <a class="dropdown-item" href="{{route('brands')}}"
+                                        style="color: {{$web_config['primary_color']}} !important;">
+                                            {{ \App\CPU\translate('View_more') }}
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         @endif
                         @php($discount_product = App\Model\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
                         @if ($discount_product>0)
                             <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
-                                <a class="nav-link text-capitalize"
-                                   href="{{route('products',['data_from'=>'discounted','page'=>1])}}">{{ \App\CPU\translate('discounted_products')}}</a>
+                                <a class="nav-link text-capitalize" href="{{route('products',['data_from'=>'discounted','page'=>1])}}">{{ \App\CPU\translate('discounted_products')}}</a>
                             </li>
                         @endif
 
@@ -629,7 +616,7 @@
                             @php($seller_registration=\App\Model\BusinessSetting::where(['type'=>'seller_registration'])->first()->value)
                             @if($seller_registration)
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link" href="{{route('shop.apply')}}">
+				    <a class="nav-link" href="{{route('shop.apply')}}">
                                         Sell on YeapCart
                                     </a>
                                     <div class="dropdown">
@@ -642,12 +629,12 @@
                                             style="min-width: 165px !important; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                             <a class="dropdown-item" href="{{route('shop.apply')}}">
                                                 {{ \App\CPU\translate('Become a')}} {{ \App\CPU\translate('Seller')}}
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{route('seller.auth.login')}}">
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{route('seller.auth.login')}}">
                                                 {{ \App\CPU\translate('Seller')}}  {{ \App\CPU\translate('login')}}
-                                        </a>
-                                    </div>-->
+                                            </a>
+                                        </div>-->
                                     </div>
                                 </li>
                             @endif
@@ -660,7 +647,7 @@
 </header>
 
 <script>
-    function myFunction() {
-        $('#anouncement').addClass('d-none').removeClass('d-flex')
-    }
+function myFunction() {
+  $('#anouncement').addClass('d-none').removeClass('d-flex')
+}
 </script>

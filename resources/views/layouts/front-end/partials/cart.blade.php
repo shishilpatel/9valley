@@ -8,7 +8,7 @@
         </span>
         <i class="navbar-tool-icon czi-cart"></i>
     </a>
-    <a class="navbar-tool-text {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" href="{{route('shop-cart')}}"><small>{{\App\CPU\translate('my_cart')}}</small>
+    <a class="navbar-tool-text {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" href="{{route('shop-cart')}}"><!--<small>{{\App\CPU\translate('my_cart')}}</small>-->
         {{\App\CPU\Helpers::currency_converter(\App\CPU\CartManager::cart_total_applied_discount(\App\CPU\CartManager::get_cart()))}}
     </a>
     <!-- Cart dropdown-->

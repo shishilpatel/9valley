@@ -82,8 +82,10 @@
         }
 
         .search_button {
-            background-color: {{$web_config['primary_color']}};
+            {{--background-color: {{$web_config['primary_color']}};--}}
+            background-color:#000;
             border: none;
+            color:#fff;
         }
 
         .nav-link {
