@@ -298,7 +298,7 @@
             .recomanded-buy-button {
                 text-align: center;
                 /*margin-top: 30px;*/
-                margin-bottom: 20px;
+                padding-bottom: 20px;
             }
         }
         @media(min-width:801px){
@@ -334,7 +334,7 @@
             .recomanded-buy-button {
                 text-align: center;
                 /*margin-top: 63px;*/
-                margin-bottom: 20px;
+                padding-bottom: 20px;
             }
 
         }
