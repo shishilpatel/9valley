@@ -39,11 +39,13 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'required',
-            'priority'=>'required'
+            'priority'=>'required',
+            'fa_icon' => 'required'
         ], [
             'name.required' => 'Category name is required!',
             'image.required' => 'Category image is required!',
             'priority.required' => 'Category priority is required!',
+            'fa_icon.required' => 'Font Awesome icon is required!',
         ]);
 
         $category = new Category;
@@ -53,6 +55,7 @@ class CategoryController extends Controller
         $category->parent_id = 0;
         $category->position = 0;
         $category->priority = $request->priority;
+        $category->fa_icon = $request->fa_icon;
         $category->save();
 
         $data = [];

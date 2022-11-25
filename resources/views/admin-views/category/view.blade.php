@@ -69,7 +69,7 @@
                                     <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
                                          id="{{$lang}}-form">
                                         <label class="title-color">Font Awesome Icon<span class="text-danger">*</span></label>
-                                        <input type="text" name="fa_icon" class="form-control"
+                                        <input type="text" id="fa_icon" name="fa_icon" class="form-control"
                                                placeholder="Font Awesome code">
                                     </div>
                                     <div class="from_part_2">
