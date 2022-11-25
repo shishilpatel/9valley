@@ -870,10 +870,7 @@
                                     @if ($key<10)
                                     <div class="text-center"  style="margin: 5px;">
                                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
-                                            <img style="vertical-align: middle; height: 100px;border-radius: 5px;"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                src="{{asset("storage/app/public/category/$category->icon")}}"
-                                                alt="{{$category->name}}">
+                                            <i class="{{ $category->fa_icon }}"></i>
                                             <p class="text-center small "
                                             style="margin-top: 5px">{{Str::limit($category->name, 12)}}</p>
                                         </a>
@@ -1243,8 +1240,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system" >
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/delivery.png")}}"
-                                 alt="">
+                        <i class="fa-solid fa-truck fa-3x"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>
@@ -1256,8 +1252,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/Payment.png")}}"
-                                 alt="">
+                        <i class="fa fa-shield fa-3x" style="color:darkgreen"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>
@@ -1269,8 +1264,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/money.png")}}"
-                                 alt="">
+                        <i class="fa-solid fa-rotate-left fa-3x" style="color: chocolate"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>
@@ -1282,8 +1276,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/Genuine.png")}}"
-                                 alt="">
+                        <i class="fa fa-certificate fa-3x"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>

@@ -209,7 +209,7 @@
                                 <span
                                     class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>
                            </span>
-                            <i class="navbar-tool-icon czi-heart"></i>
+                            <i class="fa-solid fa-star"></i>
                         </a>
                     </div>
                     @if(auth('customer')->check())
