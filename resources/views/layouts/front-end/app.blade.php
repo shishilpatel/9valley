@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/slick.css">
+{{--    <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/slick.css">--}}
+    <script src="https://kit.fontawesome.com/a84e1ef45e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/font-awesome.min.css">
 {{--    <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/font-awesome.min.css">--}}
     <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
