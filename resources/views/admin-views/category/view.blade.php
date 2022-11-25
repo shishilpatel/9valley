@@ -66,6 +66,12 @@
                                             @endfor
                                         </select>
                                     </div>
+                                    <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
+                                         id="{{$lang}}-form">
+                                        <label class="title-color">Font Awesome Icon<span class="text-danger">*</span></label>
+                                        <input type="text" name="fa_icon" class="form-control"
+                                               placeholder="Font Awesome code">
+                                    </div>
                                     <div class="from_part_2">
                                         <label class="title-color">{{\App\CPU\translate('Category_Logo')}}</label>
                                         <span class="text-info"><span class="text-danger">*</span> ( {{\App\CPU\translate('ratio')}} 1:1 )</span>
