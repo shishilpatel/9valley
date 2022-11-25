@@ -116,6 +116,9 @@ class BusinessSettingsController extends Controller
         if ($request->name == 'linkedin') {
             $icon = 'fa fa-linkedin';
         }
+        if ($request->name == 'youtube') {
+            $icon = 'fa fa-youtube';
+        }
         $social_media = new SocialMedia;
         $social_media->name = $request->name;
         $social_media->link = $request->link;

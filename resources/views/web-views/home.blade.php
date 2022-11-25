@@ -1002,8 +1002,7 @@
                     <div class="card-body">
                         <div class="row d-flex justify-content-between m-3">
                             <div>
-                                <img style="height:30px;width:30px;"  src="{{asset("public/assets/front-end/png/best sellings.png")}}"
-                                         alt="">
+                                <i class="fa-regular fa-trophy-star"></i>
                                     <span style="margin-left:10px;text-transform: uppercase;font-weight: 700;">{{ \App\CPU\translate('best sellings')}}</span>
                             </div>
                             <div>
@@ -1243,7 +1242,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system" >
                     <div style="text-align: center;">
-                        <i class="fa-solid fa-truck fa-3x"></i>
+                        <i class="fa-solid fa-truck-fast fa-3x"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>
@@ -1279,7 +1278,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <i class="fa fa-certificate fa-3x"></i>
+                        <i class="fa fa-award fa-3x"></i>
                     </div>
                     <div style="text-align: center;">
                         <p>

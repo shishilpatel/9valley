@@ -34,6 +34,7 @@
                                             <option value="instagram">{{\App\CPU\translate('Instagram')}}</option>
                                             <option value="facebook">{{\App\CPU\translate('Facebook')}}</option>
                                             <option value="twitter">{{\App\CPU\translate('Twitter')}}</option>
+                                            <option value="youtube">YouTube</option>
                                             <option value="linkedin">{{\App\CPU\translate('LinkedIn')}}</option>
                                             <option value="pinterest">{{\App\CPU\translate('Pinterest')}}</option>
                                             <option value="google-plus">{{\App\CPU\translate('Google plus')}}</option>
