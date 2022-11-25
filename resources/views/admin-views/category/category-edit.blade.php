@@ -26,8 +26,10 @@
                     <!-- <div class="card-header">
                         {{ \App\CPU\translate('category_form')}}
                     </div> -->
-                    <div class="card-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                        <form action="{{route('admin.category.update',[$category['id']])}}" method="POST" enctype="multipart/form-data">
+                    <div class="card-body"
+                         style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                        <form action="{{route('admin.category.update',[$category['id']])}}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
                             @php($language=\App\Model\BusinessSetting::where('type','pnc_language')->first())
                             @php($language = $language->value ?? null)
@@ -46,92 +48,97 @@
                             <div class="row">
                                 <div class="{{ $category['parent_id']==0 ? 'col-lg-6':'col-12' }}">
                                     @foreach(json_decode($language) as $lang)
-                                    <div>
-                                        <?php
-                                        if (count($category['translations'])) {
-                                            $translate = [];
-                                            foreach ($category['translations'] as $t) {
-                                                if ($t->locale == $lang && $t->key == "name") {
-                                                    $translate[$lang]['name'] = $t->value;
+                                        <div>
+                                                <?php
+                                                if (count($category['translations'])) {
+                                                    $translate = [];
+                                                    foreach ($category['translations'] as $t) {
+                                                        if ($t->locale == $lang && $t->key == "name") {
+                                                            $translate[$lang]['name'] = $t->value;
+                                                        }
+                                                    }
                                                 }
-                                            }
-                                        }
-                                        ?>
-                                        <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
-                                            id="{{$lang}}-form">
-                                            <label class="title-color">{{\App\CPU\translate('Category_Name')}}
-                                                ({{strtoupper($lang)}})</label>
-                                            <input type="text" name="name[]"
-                                                value="{{$lang==$default_lang?$category['name']:($translate[$lang]['name']??'')}}"
-                                                class="form-control"
-                                                placeholder="{{\App\CPU\translate('New')}} {{\App\CPU\translate('Category')}}" {{$lang == $default_lang? 'required':''}}>
+                                                ?>
+                                            <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
+                                                 id="{{$lang}}-form">
+                                                <label class="title-color">{{\App\CPU\translate('Category_Name')}}
+                                                    ({{strtoupper($lang)}})</label>
+                                                <input type="text" name="name[]"
+                                                       value="{{$lang==$default_lang?$category['name']:($translate[$lang]['name']??'')}}"
+                                                       class="form-control"
+                                                       placeholder="{{\App\CPU\translate('New')}} {{\App\CPU\translate('Category')}}" {{$lang == $default_lang? 'required':''}}>
+                                            </div>
+                                            <input type="hidden" name="lang[]" value="{{$lang}}">
                                         </div>
-                                        <input type="hidden" name="lang[]" value="{{$lang}}">
-                                    </div>
                                     @endforeach
 
                                     <div class="form-group">
-                                        <label class="title-color" for="priority">{{\App\CPU\translate('priority')}}</label>
+                                        <label class="title-color"
+                                               for="priority">{{\App\CPU\translate('priority')}}</label>
                                         <select class="form-control" name="priority" id="" required>
                                             @for ($i = 0; $i <= 10; $i++)
-                                            <option
-                                            value="{{$i}}" {{$category['priority']==$i?'selected':''}}>{{$i}}</option>
+                                                <option
+                                                    value="{{$i}}" {{$category['priority']==$i?'selected':''}}>{{$i}}</option>
                                             @endfor
                                         </select>
                                     </div>
-                                <!--image upload only for main category-->
-                                @if($category['parent_id']==0)
-                                    <div class="from_part_2">
-                                        <label class="title-color">{{\App\CPU\translate('Category Logo')}}</label>
-                                        <span class="text-info">({{\App\CPU\translate('ratio')}} 1:1)</span>
-                                        <div class="custom-file text-left">
-                                            <input type="file" name="image" id="customFileEg1"
-                                                   class="custom-file-input"
-                                                   accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                            <label class="custom-file-label"
-                                                   for="customFileEg1">{{\App\CPU\translate('choose')}} {{\App\CPU\translate('file')}}</label>
+                                    <!--image upload only for main category-->
+                                    @if($category['parent_id']==0)
+                                        <div class="from_part_2">
+                                            <label class="title-color">{{\App\CPU\translate('Category Logo')}}</label>
+                                            <span class="text-info">({{\App\CPU\translate('ratio')}} 1:1)</span>
+                                            <div class="custom-file text-left">
+                                                <input type="file" name="image" id="customFileEg1"
+                                                       class="custom-file-input"
+                                                       accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                                <label class="custom-file-label"
+                                                       for="customFileEg1">{{\App\CPU\translate('choose')}} {{\App\CPU\translate('file')}}</label>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
+                                             id="{{$lang}}-form">
+                                            <label class="title-color">Font Awesome Icon<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="fa_icon" name="fa_icon" class="form-control"
+                                                   placeholder="Font Awesome code" value="{{$category['fa_icon']}}">
+                                        </div>
                                 </div>
-                                <div class="col-lg-6 mt-5 mt-lg-0 from_part_2">
-                                    <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
-                                         id="{{$lang}}-form">
-                                        <label class="title-color">Font Awesome Icon<span class="text-danger">*</span></label>
-                                        <input type="text" id="fa_icon" name="fa_icon" class="form-control"
-                                               placeholder="Font Awesome code" value="{{$category['fa_icon']}}">
-                                    </div>
-                                </div>
+
                                 <div class="col-lg-6 mt-5 mt-lg-0 from_part_2">
                                     <div class="form-group">
                                         <center>
                                             <img class="upload-img-view"
-                                                    id="viewer"
-                                                    src="{{asset('storage/app/public/category')}}/{{$category['icon']}}"
-                                                    alt=""/>
+                                                 id="viewer"
+                                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}"
+                                                 alt=""/>
                                         </center>
                                     </div>
                                 </div>
                                 @endif
                                 @if($category['parent_id']!=0)
-                                        <div class="d-flex justify-content-end gap-3">
-                                            <button type="reset" id="reset" class="btn btn-secondary px-4">{{ \App\CPU\translate('reset')}}</button>
-                                            <button type="submit" class="btn btn--primary px-4">{{ \App\CPU\translate('update')}}</button>
-                                        </div>
+                                    <div class="d-flex justify-content-end gap-3">
+                                        <button type="reset" id="reset"
+                                                class="btn btn-secondary px-4">{{ \App\CPU\translate('reset')}}</button>
+                                        <button type="submit"
+                                                class="btn btn--primary px-4">{{ \App\CPU\translate('update')}}</button>
                                     </div>
-                                @endif
                             </div>
-
-                            @if($category['parent_id']==0)
-                                <div class="d-flex justify-content-end gap-3">
-                                    <button type="reset" id="reset" class="btn btn-secondary px-4">{{ \App\CPU\translate('reset')}}</button>
-                                    <button type="submit" class="btn btn--primary px-4">{{ \App\CPU\translate('update')}}</button>
-                                </div>
-                            @endif
-                        </form>
+                        @endif
                     </div>
+
+                    @if($category['parent_id']==0)
+                        <div class="d-flex justify-content-end gap-3">
+                            <button type="reset" id="reset"
+                                    class="btn btn-secondary px-4">{{ \App\CPU\translate('reset')}}</button>
+                            <button type="submit"
+                                    class="btn btn--primary px-4">{{ \App\CPU\translate('update')}}</button>
+                        </div>
+                        @endif
+                        </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 
