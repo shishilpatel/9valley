@@ -93,11 +93,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
-                                     id="{{$lang}}-form">
-                                    <label class="title-color">Font Awesome Icon<span class="text-danger">*</span></label>
-                                    <input type="text" id="fa_icon" name="fa_icon" class="form-control"
-                                           placeholder="Font Awesome code" value="{{$category['fa_icon']}}">
+                                <div class="col-lg-6 mt-5 mt-lg-0 from_part_2">
+                                    <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form"
+                                         id="{{$lang}}-form">
+                                        <label class="title-color">Font Awesome Icon<span class="text-danger">*</span></label>
+                                        <input type="text" id="fa_icon" name="fa_icon" class="form-control"
+                                               placeholder="Font Awesome code" value="{{$category['fa_icon']}}">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 mt-5 mt-lg-0 from_part_2">
                                     <div class="form-group">
