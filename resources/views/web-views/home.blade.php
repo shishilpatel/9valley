@@ -870,7 +870,10 @@
                                     @if ($key<10)
                                     <div class="text-center"  style="margin: 5px;">
                                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
-                                            <i class="{{ $category->fa_icon }}"></i>
+                                            <img style="vertical-align: middle; height: 100px;border-radius: 5px;"
+                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                 src="{{asset("storage/app/public/category/$category->icon")}}"
+                                                 alt="{{$category->name}}">
                                             <p class="text-center small "
                                             style="margin-top: 5px">{{Str::limit($category->name, 12)}}</p>
                                         </a>
