@@ -88,6 +88,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($request->id);
         $category->name = $request->name[array_search('en', $request->lang)];
+        $category->fa_icon = $request->fa_icon;
         $category->slug = Str::slug($request->name[array_search('en', $request->lang)]);
         if ($request->image) {
             $category->icon = ImageManager::update('category/', $category->icon, 'png', $request->file('image'));
