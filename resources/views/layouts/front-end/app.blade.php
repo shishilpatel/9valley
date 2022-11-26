@@ -57,15 +57,9 @@
             direction: {{ Session::get('direction') }};
         }
 
-        ul.navbar-nav.business-menu li::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 0;
-            width: 2px;
-            height: 15px;
-            background-color: #000;
+        i.border-bar {
+            border-right: 2px solid #000;
+            padding-left: 10px;
         }
 
         .password-toggle-btn .password-toggle-indicator:hover {

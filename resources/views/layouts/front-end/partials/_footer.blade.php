@@ -1,7 +1,7 @@
 <!-- Footer -->
 <style>
     .social-media :hover {
-        color: {{$web_config['secondary_color']}}  !important;
+        color: {{$web_config['secondary_color']}}   !important;
     }
 
     .widget-list-link {
@@ -35,6 +35,7 @@
 
     .start_address_under_line {
     {{Session::get('direction') === "rtl" ? 'width: 344px;' : 'width: 331px;'}}
+
 
     }
 
@@ -103,9 +104,7 @@
         <div>
             <a href="{{route('about-us')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;"
-                         src="{{asset("public/assets/front-end/png/about company.png")}}"
-                         alt="">
+                    <i class="fa-solid fa-building fa-3x"></i>
                 </div>
                 <div style="text-align: center;">
 
@@ -121,8 +120,7 @@
         <div>
             <a href="{{route('contacts')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/contact us.png")}}"
-                         alt="">
+                    <i class="fa-solid fa-headset fa-3x"></i>
                 </div>
                 <div style="text-align: center;">
                     <p>
@@ -136,8 +134,7 @@
         <div>
             <a href="{{route('helpTopic')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/faq.png")}}"
-                         alt="">
+                    <i class="fa-solid fa-question fa-3x"></i>
                 </div>
                 <div style="text-align: center;">
                     <p>

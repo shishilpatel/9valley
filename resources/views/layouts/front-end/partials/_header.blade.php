@@ -181,9 +181,6 @@
                         <button class="input-group-append-overlay search_button" type="submit"
                                 style="padding:1.5% 3% 0% 3%;border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};top:0">
                             Search
-                            {{--                                <span class="input-group-text" style="font-size: 20px;">--}}
-                            {{--                                    <i class="czi-search text-white"></i>--}}
-                            {{--                                </span>--}}
                         </button>
                         <input name="data_from" value="search" hidden>
                         <input name="page" value="1" hidden>
@@ -571,15 +568,12 @@
 
                         @php($business_mode=\App\CPU\Helpers::get_business_settings('business_mode'))
                         @if ($business_mode == 'multi')
-                            <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
-                                <a class="nav-link" href="{{route('sellers')}}">{{ \App\CPU\translate('Sellers')}}</a>
-                            </li>
 
                             @php($seller_registration=\App\Model\BusinessSetting::where(['type'=>'seller_registration'])->first()->value)
                             @if($seller_registration)
-                                <li class="nav-item">
+                                <li class="nav-item bar">
                                     <a class="nav-link" href="{{route('shop.apply')}}">
-                                        Sell on YeapCart
+                                        Sell on YeapCart<i class="border-bar"></i>
                                     </a>
                                     <!--<div class="dropdown">
                                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -600,9 +594,9 @@
                             </div>-->
                                 </li>
                             @endif
-                            <li class="nav-item">
+                            <li class="nav-item bar">
                                 <a class="nav-link" href="https://yeapcart.shiprocket.co">
-                                    Track Order
+                                    Track Order<i class="border-bar"></i>
                                 </a>
                             </li>
                             @php($currency_model = \App\CPU\Helpers::get_business_settings('currency_model'))
@@ -637,7 +631,7 @@
                                             {{$data['name']}}
                                         @endif
                                     @endforeach
-                                </a>
+                                        </a>
                                 <ul class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
                                     style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                     @foreach(json_decode($language['value'],true) as $key =>$data)
