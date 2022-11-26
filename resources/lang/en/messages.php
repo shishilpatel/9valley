@@ -2081,7 +2081,7 @@
   'config_data_updated' => 'Config data updated',
   'general_settings' => 'General settings',
   'admin_approval_for_products_updated_successfully!' => 'Admin approval for products updated successfully!',
-  'customer_allet_settings' => 'Customer allet settings',
+  'customer_allet_settings' => 'Customer Wallet settings',
   'refund_request_after_order_within' => 'Refund request after order within',
   'Qty' => 'Qty',
   'Paid By' => 'Paid By',
