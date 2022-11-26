@@ -12921,7 +12921,7 @@ a.nav-link:hover .media-tab-media {
 .mega-nav .dropdown-menu > .dropdown > a {
     padding-top: .67rem;
     padding-bottom: .70rem;
-    border-bottom: 1px solid #e3e9ef
+    /*border-bottom: 1px solid #e3e9ef*/
 }
 
 .mega-nav .dropdown-menu > .dropdown:last-child > a {
