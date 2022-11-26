@@ -706,7 +706,7 @@
                                 <div class="col-8">
                                     <div class="row d-flex ">
                                         <div>
-                                            <img style="height: 65px; width: 65px; border-radius: 50%"
+                                            <img style="width: 80px; border-radius: 50%"
                                                 src="{{asset('storage/app/public/shop')}}/{{$product->seller->shop->image}}"
                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                 alt="">
@@ -808,15 +808,15 @@
                         @endif
                     @else
                         <div class="row d-flex justify-content-between">
-                            <div class="col-9 ">
+                            <div class="col-12 ">
                                 <div class="row d-flex ">
-                                    <div>
+                                    <div class="col-3">
                                         <img style="height: 65px; width: 65px; border-radius: 50%"
                                             src="{{asset("storage/app/public/company")}}/{{$web_config['fav_icon']->value}}"
                                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                             alt="">
                                     </div>
-                                    <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">
+                                    <div class="col-9 mt-2">
                                         <span style="font-weight: 700;font-size: 16px;">
                                             {{$web_config['name']->value}}
                                         </span><br>
