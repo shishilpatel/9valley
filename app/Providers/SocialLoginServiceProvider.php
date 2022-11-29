@@ -41,7 +41,7 @@ class SocialLoginServiceProvider extends ServiceProvider
                         $facebook_config = array(
                             'client_id' => $socialLoginService['client_id'],
                             'client_secret' => $socialLoginService['client_secret'],
-                            'redirect' => url('customer/auth/login/facebook/callback'),
+                            'redirect' => 'https://yeapcart.comcustomer/auth/login/facebook/callback',
                         );
                         Config::set('services.facebook', $facebook_config);
                     }

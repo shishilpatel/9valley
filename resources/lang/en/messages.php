@@ -566,8 +566,8 @@
   'login_first_for_next_steps' => 'Login first for next steps',
   'Select your desire category' => 'Select your desire category',
   'i_agree_to_Your_terms' => 'I agree to Your terms',
-  'sing_up_with_google' => 'Sing up with google',
-  'sing_up_with_facebook' => 'Sing up with facebook',
+  'sing_up_with_google' => 'Sign up with google',
+  'sing_up_with_facebook' => 'Sign up with facebook',
   'products' => 'Products',
   'filter' => 'Filter',
   'Choose' => 'Choose',
@@ -2204,4 +2204,6 @@
   'All input field required' => 'All input field required',
   'UPDATE_ADDRESSES' => 'UPDATE ADDRESSES',
   'This option is disabled for demo' => 'This option is disabled for demo',
+  'We are sorry, server is not responding' => 'We are sorry  server is not responding',
+  'Try after sometime' => 'Try after sometime',
 );
