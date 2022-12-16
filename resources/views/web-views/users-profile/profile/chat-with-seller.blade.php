@@ -125,7 +125,6 @@
         }
 
 
-
         img {
             max-width: 100%;
         }
@@ -337,11 +336,6 @@
             padding: 20px;
         }
 
-
-        .active {
-            background: #1B7FED;
-        }
-
         .active h5 {
             color: white;
         }
@@ -529,7 +523,8 @@
                                                 <input
                                                     class="form-control form-control-sm {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}} w-75"
                                                     id="msgInputValue"
-                                                    type="text" placeholder="{{\App\CPU\translate('Send a message')}}" aria-label="Search">
+                                                    type="text" placeholder="{{\App\CPU\translate('Send a message')}}"
+                                                    aria-label="Search">
                                                 <input class="aSend" type="submit" id="msgSendBtn" style="width: 45px;"
                                                        value="{{\App\CPU\translate('Send')}}">
 

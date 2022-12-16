@@ -11,7 +11,7 @@
             text-align: center;
         }
     </style>
-    
+
     <style>
         .input-icons i {
             /* position: absolute; */
@@ -144,7 +144,7 @@
 @endsection
 
 @push('script')
-    
+
     {{-- recaptcha scripts start --}}
     @if(isset($recaptcha) && $recaptcha['status'] == 1)
         <script type="text/javascript">

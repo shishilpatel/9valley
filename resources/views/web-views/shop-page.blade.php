@@ -37,7 +37,7 @@
         }
 
         .page-item.active .page-link {
-            background-color: {{$web_config['primary_color']}}                       !important;
+            background-color: {{$web_config['primary_color']}}                        !important;
         }
 
         .page-item.active > .page-link {
@@ -149,6 +149,7 @@
             .openbtn-tab {
                 margin-top: 0 !important;
             }
+
             .seller-details {
                 justify-content: center !important;
                 padding-bottom: 8px;
@@ -160,7 +161,7 @@
             .openbtn {
                 display: none !important;
             }
-            
+
 
         }
 
@@ -196,7 +197,7 @@
 
 @section('content')
 
-@php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
+    @php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Page Content-->
     <div class="container pb-5 mb-2 mb-md-4">
         <div class="row rtl">
@@ -218,14 +219,18 @@
                 </div>
             </div>
             {{-- sidebar opener --}}
-            <div class="col-md-3 mt-2 rtl" style=" width: 100%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+            <div class="col-md-3 mt-2 rtl"
+                 style=" width: 100%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                 <a class="openbtn-tab" style="" onclick="openNav()">
-                    <div style="font-size: 20px; font-weight: 600; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}" class="for-tab-display"> ☰ {{\App\CPU\translate('categories')}}</div>
+                    <div
+                        style="font-size: 20px; font-weight: 600; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}"
+                        class="for-tab-display"> ☰ {{\App\CPU\translate('categories')}}</div>
                 </a>
             </div>
             {{-- seller info+contact --}}
             <div class="col-lg-12 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                <div style="border-radius:10px;background: #ffffff;{{Session::get('direction') === "rtl" ? 'padding-left:5px;' : 'padding-left:5px;'}}">
+                <div
+                    style="border-radius:10px;background: #ffffff;{{Session::get('direction') === "rtl" ? 'padding-left:5px;' : 'padding-left:5px;'}}">
                     <div class="row d-flex justify-content-between seller-details" style="">
                         {{-- logo --}}
                         <div class="d-flex" style="padding:8px;">
@@ -252,7 +257,7 @@
                                 </span>
                                 <div class="row ml-4 flex-start">
                                     <div class="mr-3">
-                                        
+
                                         @for($count=0; $count<5; $count++)
                                             @if($avg_rating >= $count+1)
                                                 <i class="sr-star czi-star-filled active"></i>
@@ -264,9 +269,9 @@
                                     </div>
                                     <div class="d-flex" style="font-size: 12px;">
                                         <span>{{ $total_review}} {{\App\CPU\translate('reviews')}} </span>
-                                        
+
                                         <span style="border-left: 1px solid #C4C4C4;margin:5px;"></span>
-                                         
+
                                         <span>{{ $total_order}} {{\App\CPU\translate('orders')}}</span>
                                     </div>
                                 </div>
@@ -277,27 +282,29 @@
                         <div class="d-flex align-items-center">
                             <div class="{{Session::get('direction') === "rtl" ? 'ml-4' : 'mr-4'}}">
                                 @if($seller_id!=0)
-                                @if (auth('customer')->check())
-                                    <div class="d-flex">
-                                        <button class="btn btn-block" data-toggle="modal"
-                                                data-target="#exampleModal" style="border-radius: 25px;border: 1px solid #1B7FED;color: #1B7FED ;">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            {{\App\CPU\translate('Chat with seller ')}}
-                                        </button>
-                                    </div>
-                                @else
-                                    <div class="d-flex">
-                                        <a href="{{route('customer.auth.login')}}" class="btn btn-block" style="border-radius: 25px;border: 1px solid #1B7FED;color: #1B7FED !important;">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            {{\App\CPU\translate('Chat with seller ')}}
-                                        </a>
-                                    </div>
+                                    @if (auth('customer')->check())
+                                        <div class="d-flex">
+                                            <button class="btn btn-block" data-toggle="modal"
+                                                    data-target="#exampleModal"
+                                                    style="border-radius: 25px;border: 1px solid #1B7FED;color: #1B7FED ;">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                {{\App\CPU\translate('Chat with seller ')}}
+                                            </button>
+                                        </div>
+                                    @else
+                                        <div class="d-flex">
+                                            <a href="{{route('customer.auth.login')}}" class="btn btn-block"
+                                               style="border-radius: 25px;border: 1px solid #1B7FED;color: #1B7FED !important;">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                {{\App\CPU\translate('Chat with seller ')}}
+                                            </a>
+                                        </div>
+                                    @endif
                                 @endif
-                            @endif
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
 
@@ -320,9 +327,11 @@
                                     <textarea name="message" class="form-control" required></textarea>
                                     <br>
                                     @if($shop['id'] != 0)
-                                        <button class="btn btn--primary" style="color: white;">{{\App\CPU\translate('send')}}</button>
+                                        <button class="btn btn--primary"
+                                                style="color: white;">{{\App\CPU\translate('send')}}</button>
                                     @else
-                                        <button class="btn btn--primary" style="color: white;" disabled>{{\App\CPU\translate('send')}}</button>
+                                        <button class="btn btn--primary" style="color: white;"
+                                                disabled>{{\App\CPU\translate('send')}}</button>
                                     @endif
                                 </form>
                             </div>
@@ -330,7 +339,8 @@
                                 <a href="{{route('chat-with-seller')}}" class="btn btn--primary mx-1">
                                     {{\App\CPU\translate('go_to')}} {{\App\CPU\translate('chatbox')}}
                                 </a>
-                                <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">{{\App\CPU\translate('close')}}
+                                <button type="button" class="btn btn-secondary pull-right"
+                                        data-dismiss="modal">{{\App\CPU\translate('close')}}
                                 </button>
                             </div>
                         </div>
@@ -339,7 +349,6 @@
             </div>
 
 
-            
         </div>
 
 
@@ -358,20 +367,22 @@
                                             style="font-weight: 700;font-size: 18px;display: inline;">{{\App\CPU\translate('categories')}}</h3>
                                     </div>
                                 </div>
-                            
+
                                 <div class="accordion mt-2" id="shop-categories">
                                     @foreach($categories as $category)
-                                        <div class="card" style="border-bottom: 2px solid #EEF6FF;background:none !important; ">
-                                            
-                                                
-                                            
-                                            <div class="card-header p-1 flex-between" >
+                                        <div class="card"
+                                             style="border-bottom: 2px solid #EEF6FF;background:none !important; ">
+
+
+                                            <div class="card-header p-1 flex-between">
                                                 <div class="d-flex ">
-                                                    <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}" style="width: 20px; border-radius:5px;height:20px;"
-                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                    src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">
+                                                    <img
+                                                        class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                        style="width: 20px; border-radius:5px;height:20px;"
+                                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                        src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">
                                                     <label class="for-hover-lable" style="cursor: pointer"
-                                                        onclick="location.href='{{route('shopView',['id'=> $seller_id,'category_id'=>$category['id']])}}'" {{--onclick="productSearch({{$seller_id}}, {{$category['id']}})"--}}>
+                                                           onclick="location.href='{{route('shopView',['id'=> $seller_id,'category_id'=>$category['id']])}}'" {{--onclick="productSearch({{$seller_id}}, {{$category['id']}})"--}}>
                                                         {{$category['name']}}
                                                     </label>
                                                 </div>
@@ -380,8 +391,10 @@
                                                     {{$category->childes->count()>0?'+':''}}
                                                 </strong>
                                             </div>
-                                            <div class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" id="collapse-{{$category['id']}}"
-                                                 style="display: none">
+                                            <div
+                                                class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}"
+                                                id="collapse-{{$category['id']}}"
+                                                style="display: none">
                                                 @foreach($category->childes as $child)
                                                     <div class=" for-hover-lable card-header p-1 flex-between">
                                                         <label style="cursor: pointer"
@@ -393,8 +406,10 @@
                                                             {{$child->childes->count()>0?'+':''}}
                                                         </strong>
                                                     </div>
-                                                    <div class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" id="collapse-{{$child['id']}}"
-                                                         style="display: none">
+                                                    <div
+                                                        class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}"
+                                                        id="collapse-{{$child['id']}}"
+                                                        style="display: none">
                                                         @foreach($child->childes as $ch)
                                                             <div class="card-header p-1 flex-between">
                                                                 <label class="for-hover-lable" style="cursor: pointer"
@@ -415,7 +430,8 @@
                 </aside>
             </div>
             {{-- sidebar (Category mobile) - after toggle --}}
-            <div id="mySidepanel" class="sidepanel" style="text-align: {{Session::get('direction') === "rtl" ? 'right:0; left:auto' : 'right:auto; left:0'}};">
+            <div id="mySidepanel" class="sidepanel"
+                 style="text-align: {{Session::get('direction') === "rtl" ? 'right:0; left:auto' : 'right:auto; left:0'}};">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                 <div class="cz-sidebar-body">
                     <div class="widget widget-categories mb-4 pb-4 border-bottom">
@@ -427,7 +443,8 @@
                         </div>
                         <div class="divider-role"
                              style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: 5px;"></div>
-                        <div class="accordion mt-n1" id="shop-categories" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                        <div class="accordion mt-n1" id="shop-categories"
+                             style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                             @foreach($categories as $category)
                                 <div class="card">
                                     <div class="card-header p-1 flex-between">
@@ -440,7 +457,8 @@
                                             {{$category->childes->count()>0?'+':''}}
                                         </strong>
                                     </div>
-                                    <div class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" id="collapse-m-{{$category['id']}}"
+                                    <div class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}"
+                                         id="collapse-m-{{$category['id']}}"
                                          style="display: none">
                                         @foreach($category->childes as $child)
                                             <div class=" for-hover-lable card-header p-1 flex-between">
@@ -453,8 +471,10 @@
                                                     {{$child->childes->count()>0?'+':''}}
                                                 </strong>
                                             </div>
-                                            <div class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}" id="collapse-m-{{$child['id']}}"
-                                                 style="display: none">
+                                            <div
+                                                class="card-body {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}"
+                                                id="collapse-m-{{$child['id']}}"
+                                                style="display: none">
                                                 @foreach($child->childes as $ch)
                                                     <div class="card-header p-1 flex-between">
                                                         <label class="for-hover-lable" style="cursor: pointer"
@@ -479,11 +499,14 @@
                         <form class="{{--form-inline--}} md-form form-sm mt-0" method="get"
                               action="{{route('shopView',['id'=>$seller_id])}}">
                             <div class="input-group input-group-sm mb-3">
-                                <input type="text" class="form-control" name="product_name" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                       placeholder="{{\App\CPU\translate('Search products from this store')}}" aria-label="Recipient's username"
+                                <input type="text" class="form-control" name="product_name"
+                                       style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
+                                       placeholder="{{\App\CPU\translate('Search products from this store')}}"
+                                       aria-label="Recipient's username"
                                        aria-describedby="basic-addon2">
-                                <div class="input-group-append" >
-                                    <button type="submit" class="input-group-text" id="basic-addon2" style="background: #F3F5F9">
+                                <div class="input-group-append">
+                                    <button type="submit" class="input-group-text" id="basic-addon2"
+                                            style="background: #F3F5F9">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </div>

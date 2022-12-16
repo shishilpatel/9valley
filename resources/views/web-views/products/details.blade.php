@@ -198,7 +198,7 @@
     $decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings');
     ?>
     <!-- Page Content-->
-    <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+    <div class="ps-container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <!-- General info tab-->
         <div class="row" style="direction: ltr">
             <!-- Product gallery-->
@@ -406,18 +406,18 @@
 
                                 <div class="d-flex justify-content-start mt-2 mb-3">
                                     <button
-                                        class="btn element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
+                                        class="ps-btn add-to-cart-button btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
                                         onclick="buy_now()"
                                         type="button"
-                                        style="width:37%; height: 45px; background: #FFA825 !important; color: #ffffff;">
-                                        <span class="string-limit">{{\App\CPU\translate('buy_now')}}</span>
+                                        style="">
+                                        {{\App\CPU\translate('buy_now')}}
                                     </button>
                                     <button
-                                        class="btn btn--primary element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
+                                        class="ps-btn ps-btn--black add-to-cart-button btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
                                         onclick="addToCart()"
                                         type="button"
-                                        style="width:37%; height: 45px;{{Session::get('direction') === "rtl" ? 'margin-right: 20px;' : 'margin-left: 20px;'}}">
-                                        <span class="string-limit">{{\App\CPU\translate('add_to_cart')}}</span>
+                                        style="color: #ffffff; {{Session::get('direction') === "rtl" ? 'margin-right: 20px;' : 'margin-left: 20px;'}}">
+                                        {{\App\CPU\translate('add_to_cart')}}
                                     </button>
                                     <button type="button" onclick="addWishlist('{{$product['id']}}')"
                                             class="btn for-hover-bg"
@@ -671,32 +671,12 @@
 
             </div>
             <div class="col-md-3 ">
-                <div class="product-details-shipping-details">
-                    <div class="shipping-details-bottom-border">
-                        <div style="padding: 25px;">
-                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" style="height: 20px;width:20px;" src="{{asset("public/assets/front-end/png/Payment.png")}}"
-                                    alt="">
-                            <span>{{\App\CPU\translate('Safe Payment')}}</span>
-                        </div>
-                    </div>
-                    <div  class="shipping-details-bottom-border">
-                        <div style="padding: 25px;">
-                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" style="height: 20px;width:20px;"
-                                src="{{asset("public/assets/front-end/png/money.png")}}"
-                                    alt="">
-                            <span>{{ \App\CPU\translate('7 Days Return Policy')}}</span>
-                        </div>
-                    </div>
-                    <div class="shipping-details-bottom-border">
-                       <div style="padding: 25px;">
-                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}"
-                                style="height: 20px;width:20px;"
-                                src="{{asset("public/assets/front-end/png/Genuine.png")}}"
-                                alt="">
-                            <span>{{ \App\CPU\translate('100% Authentic Products')}}</span>
-                       </div>
-                    </div>
-                </div>
+                <aside class="widget widget_product widget_features">
+                    <p><i class="icon-network"></i> Shipping worldwide</p>
+                    <p><i class="icon-3d-rotate"></i> Free 7-day return if eligible, so easy</p>
+                    <p><i class="icon-receipt"></i> Supplier give bills for this product.</p>
+                    <p><i class="icon-credit-card"></i> Pay online or when receiving goods</p>
+                </aside>
                 <div style="background: #ffffff; padding: 25px;border-radius: 5px;
                     font-weight: 400;color: #212629;margin-top: 10px;">
                     {{--seller section--}}

@@ -2206,4 +2206,5 @@
   'This option is disabled for demo' => 'This option is disabled for demo',
   'We are sorry, server is not responding' => 'We are sorry  server is not responding',
   'Try after sometime' => 'Try after sometime',
+  'incomplete_info' => 'Incomplete info',
 );

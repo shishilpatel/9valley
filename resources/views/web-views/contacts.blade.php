@@ -75,7 +75,7 @@
                           <div class="col-sm-6">
                               <div class="form-group">
                                 <label >{{\App\CPU\translate('your_name')}}</label>
-                                <input class="form-control name" name="name" type="text" 
+                                <input class="form-control name" name="name" type="text"
                                   value="{{ old('name') }}" placeholder="John Doe" required>
 
                               </div>
@@ -83,7 +83,7 @@
                           <div class="col-sm-6">
                               <div class="form-group">
                                 <label for="cf-email">{{\App\CPU\translate('email_address')}}</label>
-                                <input class="form-control email" name="email" type="email" 
+                                <input class="form-control email" name="email" type="email"
                                   value="{{ old('email') }}"
                                   placeholder="johndoe@email.com" required >
 
@@ -100,7 +100,7 @@
                             <div class="col-sm-6">
                               <div class="form-group">
                                 <label for="cf-subject">{{\App\CPU\translate('Subject')}}:</label>
-                                <input class="form-control subject" type="text" name="subject" 
+                                <input class="form-control subject" type="text" name="subject"
                                   value="{{ old('subject') }}"   placeholder="{{\App\CPU\translate('Short title')}}" required>
 
                               </div>
@@ -157,7 +157,7 @@
     <script>
         $("#getResponse").on('submit', function (e) {
             var response = grecaptcha.getResponse();
-        
+
             if (response.length === 0) {
                 e.preventDefault();
                 toastr.error("{{\App\CPU\translate('Please check the recaptcha')}}");

@@ -1,7 +1,15 @@
 <!-- Footer -->
 <style>
     .social-media :hover {
-        color: {{$web_config['secondary_color']}}   !important;
+        color: {{$web_config['secondary_color']}}         !important;
+    }
+
+    .ps-block--site-features .ps-block__left, .ps-block--site-features .ps-block__right {
+        width: 100%;
+    }
+
+    .ps-block--site-features .ps-block__item {
+        text-align: center;
     }
 
     .widget-list-link {
@@ -35,6 +43,12 @@
 
     .start_address_under_line {
     {{Session::get('direction') === "rtl" ? 'width: 344px;' : 'width: 331px;'}}
+
+
+
+
+
+
 
 
     }
@@ -94,302 +108,219 @@
         }
     }
 </style>
-<div
-    class="d-flex justify-content-center text-center {{Session::get('direction') === "rtl" ? 'text-md-right' : 'text-md-left'}} mt-3"
-    style="background: #fff;padding:20px;">
-    {{-- <div class="col-md-1">
 
-    </div> --}}
-    <div class="col-md-3 d-flex justify-content-center">
-        <div>
-            <a href="{{route('about-us')}}">
-                <div style="text-align: center;">
-                    <i class="fa-solid fa-building fa-3x"></i>
-                </div>
-                <div style="text-align: center;">
-
-                    <p>
-                        {{ \App\CPU\translate('About Company')}}
-                    </p>
-
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-md-3 d-flex justify-content-center">
-        <div>
-            <a href="{{route('contacts')}}">
-                <div style="text-align: center;">
-                    <i class="fa-solid fa-headset fa-3x"></i>
-                </div>
-                <div style="text-align: center;">
-                    <p>
-                        {{ \App\CPU\translate('Contact Us')}}
-                    </p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-md-3 d-flex justify-content-center">
-        <div>
-            <a href="{{route('helpTopic')}}">
-                <div style="text-align: center;">
-                    <i class="fa-solid fa-question fa-3x"></i>
-                </div>
-                <div style="text-align: center;">
-                    <p>
-                        {{ \App\CPU\translate('FAQ')}}
-                    </p>
-                </div>
-            </a>
-        </div>
-    </div>
-    {{-- <div class="col-md-1">
-
-    </div> --}}
-</div>
-
-
-<footer class="page-footer font-small mdb-colorrtl">
-    <!-- Footer Links -->
-    <div style="background:{{$web_config['primary_color']}};padding-top:30px;">
-        <div class="container text-center" style="padding-bottom: 13px;">
-
-            <!-- Footer links -->
-            <div
-                class="row text-center {{Session::get('direction') === "rtl" ? 'text-md-right' : 'text-md-left'}} mt-3 pb-3 ">
-                <!-- Grid column -->
-                <div class="col-md-3 d-flex justify-content-start align-items-center footer-web-logo">
-                    <a class="d-inline-block mt-n1" href="{{route('home')}}">
-                        <img style="/*height: 46px!important;*/ width: 200px;"
-                             src="{{asset("storage/app/public/company/")}}/{{ $web_config['footer_logo']->value }}"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                             alt="{{ $web_config['name']->value }}"/>
-                    </a>
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-
-                        <div class="col-md-3 footer-padding-bottom">
-                            <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('special')}}</h6>
-                            <ul class="widget-list" style="padding-bottom: 10px">
-                                @php($flash_deals=\App\Model\FlashDeal::where(['status'=>1,'deal_type'=>'flash_deal'])->whereDate('start_date','<=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->first())
-                                @if(isset($flash_deals))
-                                    <li class="widget-list-item">
-                                        <a class="widget-list-link"
-                                           href="{{route('flash-deals',[$flash_deals['id']])}}">
-                                            {{\App\CPU\translate('flash_deal')}}
-                                        </a>
-                                    </li>
-                                @endif
-                                <li class="widget-list-item"><a class="widget-list-link"
-                                                                href="{{route('products',['data_from'=>'featured','page'=>1])}}">{{\App\CPU\translate('featured_products')}}</a>
-                                </li>
-                                <li class="widget-list-item"><a class="widget-list-link"
-                                                                href="{{route('products',['data_from'=>'latest','page'=>1])}}">{{\App\CPU\translate('latest_products')}}</a>
-                                </li>
-                                <li class="widget-list-item"><a class="widget-list-link"
-                                                                href="{{route('products',['data_from'=>'best-selling','page'=>1])}}">{{\App\CPU\translate('best_selling_product')}}</a>
-                                </li>
-                                <li class="widget-list-item"><a class="widget-list-link"
-                                                                href="{{route('products',['data_from'=>'top-rated','page'=>1])}}">{{\App\CPU\translate('top_rated_product')}}</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="col-md-4 footer-padding-bottom"
-                             style="{{Session::get('direction') === "rtl" ? 'padding-right:20px;' : ''}}">
-                            <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('account_&_shipping_info')}}</h6>
-                            @if(auth('customer')->check())
-                                <ul class="widget-list" style="padding-bottom: 10px">
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('user-account')}}">{{\App\CPU\translate('profile_info')}}</a>
-                                    </li>
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('wishlists')}}">{{\App\CPU\translate('wish_list')}}</a>
-                                    </li>
-
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
-                                    </li>
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{ route('account-address') }}">{{\App\CPU\translate('address')}}</a>
-                                    </li>
-
-                                </ul>
-                            @else
-                                <ul class="widget-list" style="padding-bottom: 10px">
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('customer.auth.login')}}">{{\App\CPU\translate('profile_info')}}</a>
-                                    </li>
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('customer.auth.login')}}">{{\App\CPU\translate('wish_list')}}</a>
-                                    </li>
-
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
-                                    </li>
-                                    <li class="widget-list-item"><a class="widget-list-link"
-                                                                    href="{{route('customer.auth.login')}}">{{\App\CPU\translate('address')}}</a>
-                                    </li>
-
-
-                                </ul>
-                            @endif
-                        </div>
-                        <div class="col-md-5 footer-padding-bottom">
-                            @php($ios = \App\CPU\Helpers::get_business_settings('download_app_apple_stroe'))
-                            @php($android = \App\CPU\Helpers::get_business_settings('download_app_google_stroe'))
-
-                            @if($ios['status'] || $android['status'])
-                                <div class="d-flex justify-content-center">
-                                    <h6 class="text-uppercase font-weight-bold footer-heder align-items-center">
-                                        {{\App\CPU\translate('download_our_app')}}
-                                    </h6>
-                                </div>
-                            @endif
-
-
-                            <div class="store-contents d-flex justify-content-center">
-
-                                @if($android['status'])
-                                    <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
-                                        <a href="{{ $android['link'] }}" role="button">
-                                            <i class="fa-brands fa-google-play fa-4x"></i>
-                                        </a>
-                                    </div>
-                                @endif
-
-                                @if($ios['status'])
-                                    <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
-                                        <a class="" href="{{ $ios['link'] }}" role="button">
-                                            <i class="fa-brands fa-app-store-ios fa-4x"></i>
-                                        </a>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="text-nowrap mb-2">
-                                <span
-                                    style="font-weight: 700;font-size: 14.3208px;">{{\App\CPU\translate('NEWS LETTER')}}</span><br>
-                                <span
-                                    style="font-weight: 400;font-size: 11.066px;">{{\App\CPU\translate('subscribe to our new channel to get latest updates')}}</span>
-                            </div>
-                            <div class="text-nowrap mb-4" style="position:relative;">
-                                <form action="{{ route('subscription') }}" method="post">
-                                    @csrf
-                                    <input type="email" name="subscription_email" class="form-control subscribe-border"
-                                           placeholder="{{\App\CPU\translate('Your Email Address')}}" required
-                                           style="padding: 11px;text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                    <button class="subscribe-button" type="submit"
-                                            style="{{Session::get('direction') === "rtl" ? 'float:right;left:0px;border-radius:5px 0px 0px 5px;' : 'float:right;right:0px; border-radius:0px 5px 5px 0px;'}};font-size: .94rem;">
-                                        {{\App\CPU\translate('subscribe')}}
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+<footer class="ps-footer ps-footer--3">
+    <div>
+        <div class="ps-site-features">
+            <div class="">
+                <div class="ps-block--site-features">
+                    <div class="ps-block__item">
+                        <div class="ps-block__left"><i class="icon-rocket"></i></div>
+                        <div class="ps-block__right"><h4>Free Delivery</h4>
+                            <p>For all orders over $99</p></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div
-                                class="row d-flex align-items-center mobile-view-center-align {{Session::get('direction') === "rtl" ? ' flex-row-reverse' : ''}}">
-                                <div style="{{Session::get('direction') === "rtl" ? 'margin-right:23px;' : ''}}">
-                                    <span
-                                        class="mb-4 font-weight-bold footer-heder">{{ \App\CPU\translate('Start a conversation')}}</span>
-                                </div>
-                                <div class="{{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
-                                    <hr class="start_address_under_line" style="border: 1px solid #E0E0E0;"/>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-11 start_address ">
-                                    <div style="color:" class="">
-                                        <a class="widget-list-link" href="tel: {{$web_config['phone']->value}}">
-                                            <span><i class="fa fa-phone m-2"></i>{{\App\CPU\Helpers::get_business_settings('company_phone')}} </span>
-                                        </a>
-
-                                    </div>
-                                    <div style="" class="">
-                                        <a class="widget-list-link" href="email:">
-                                            <span><i class="fa fa-envelope m-2"></i> {{\App\CPU\Helpers::get_business_settings('company_email')}} </span>
-                                        </a>
-                                    </div>
-                                    <div style="" class="">
-                                        @if(auth('customer')->check())
-                                            <a class="widget-list-link" href="{{route('account-tickets')}}">
-                                                <span><i class="fa fa-user-o m-2"></i> {{ \App\CPU\translate('Support Ticket')}} </span>
-                                            </a><br>
-                                        @else
-                                            <a class="widget-list-link" href="{{route('customer.auth.login')}}">
-                                                <span><i class="fa fa-user-o m-2"></i> {{ \App\CPU\translate('Support Ticket')}} </span>
-                                            </a><br>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 ">
-                            <div
-                                class="row pl-2 d-flex align-items-center mobile-view-center-align {{Session::get('direction') === "rtl" ? ' flex-row-reverse' : ''}}">
-                                <div>
-                                    <span
-                                        class="mb-4 font-weight-bold footer-heder">{{ \App\CPU\translate('address')}}</span>
-                                </div>
-                                <div class="{{Session::get('direction') === "rtl" ? 'mr-3 ' : 'ml-3'}}">
-                                    <hr class="address_under_line" style="border: 1px solid #E0E0E0;"/>
-                                </div>
-                            </div>
-                            <div class="row pl-2">
-                                <span style="font-size: 14px;"><i class="fa fa-map-marker m-2"></i> {{ \App\CPU\Helpers::get_business_settings('shop_address')}} </span>
-                            </div>
-                        </div>
+                    <div class="ps-block__item">
+                        <div class="ps-block__left"><i class="icon-sync"></i></div>
+                        <div class="ps-block__right"><h4>90 Days Return</h4>
+                            <p>If goods have problems</p></div>
+                    </div>
+                    <div class="ps-block__item">
+                        <div class="ps-block__left"><i class="icon-credit-card"></i></div>
+                        <div class="ps-block__right"><h4>Secure Payment</h4>
+                            <p>100% secure payment</p></div>
+                    </div>
+                    <div class="ps-block__item">
+                        <div class="ps-block__left"><i class="icon-bubbles"></i></div>
+                        <div class="ps-block__right"><h4>24/7 Support</h4>
+                            <p>Dedicated support</p></div>
+                    </div>
+                    <div class="ps-block__item">
+                        <div class="ps-block__left"><i class="icon-gift"></i></div>
+                        <div class="ps-block__right"><h4>Gift Service</h4>
+                            <p>Support gift service</p></div>
                     </div>
                 </div>
-
-
-                <!-- Grid column -->
             </div>
-            <!-- Footer links -->
         </div>
     </div>
-
-
-    <!-- Grid row -->
-    <div style="background: #fff;">
-        <div class="container">
-            <div class="row end-footer footer-end last-footer-content-align">
-                <div class=" mt-3">
-                    <p class="{{Session::get('direction') === "rtl" ? 'text-right ' : 'text-left'}}"
-                       style="font-size: 16px;">{{ $web_config['copyright_text']->value }}</p>
+    <div class="ps-download-app">
+        <div class="ps-container">
+            <div class="ps-block--download-app">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                            <div class="ps-block__thumbnail"><img src="img/app.png" alt=""></div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                            <div class="ps-block__content">
+                                <h3>Download YeapCart App Now!</h3>
+                                <p>Shopping fastly and easily more with our app. Get a link to download the app on your
+                                    phone
+                                    Shop Most prominent Product from all over the India, with just few taps
+                                </p>
+                                <form class="ps-form--download-app"
+                                      action="{{ route('subscription') }}" method="post">
+                                    @csrf
+                                    <div class="form-group--nest">
+                                        <input class="form-control" type="email" name="subscription_email"
+                                               placeholder="Email Address">
+                                        <button class="ps-btn">{{\App\CPU\translate('subscribe')}}</button>
+                                    </div>
+                                </form>
+                                <p class="download-link"><a href="#">
+                                        <img src="img/google-play.png" alt=""></a>
+                                    <a href="#"><img src="img/app-store.png" alt=""></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-md-3 mt-0 mb-md-3 {{Session::get('direction') === "rtl" ? 'text-right' : 'text-left'}}">
-                    @php($social_media = \App\Model\SocialMedia::where('active_status', 1)->get())
-                    @if(isset($social_media))
-                        @foreach ($social_media as $item)
-                            <span class="social-media ">
-                                    <a class="social-btn sb-light sb-{{$item->name}} {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2"
-                                       target="_blank" href="{{$item->link}}" style="color: white!important;">
+            </div>
+        </div>
+    </div>
+    <div class="ps-container">
+
+        <div class="ps-footer__widgets">
+            <aside class="widget widget_footer widget_contact-us">
+                <h4 class="widget-title">Contact us</h4>
+                <div class="widget_content">
+                    <p>Call us 24/7</p>
+                    <h3>{{$web_config['phone']->value}}</h3>
+                    <p>{{ \App\CPU\Helpers::get_business_settings('shop_address')}} <br><a
+                            href="mailto:info@yeapcart.com"><span
+                                class="__cf_email__" data-cfemail="0c6f6362786d6f784c616d7e786a797e75226f63">info@YeapCart.com</span></a>
+                    </p>
+                    <ul class="ps-list--social">
+                        @php($social_media = \App\Model\SocialMedia::where('active_status', 1)->get())
+                        @if(isset($social_media))
+                            @foreach ($social_media as $item)
+                                <li>
+                                    <a class="{{$item->name}} {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2"
+                                       target="_blank" href="{{$item->link}}"
+                                       style="color: {{ ($item->name == 'linkedin') ? '#0072b1' : '' }}!important;">
                                         <i class="{{$item->icon}}" aria-hidden="true"></i>
                                     </a>
-                                </span>
-                        @endforeach
-                    @endif
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
-                <div class="d-flex" style="font-size: 14px;">
-                    <div class="{{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}}">
-                        <a class="widget-list-link"
-                           href="{{route('terms')}}">{{\App\CPU\translate('terms_&_conditions')}}</a>
-                    </div>
-                    <div>
-                        <a class="widget-list-link" href="{{route('privacy-policy')}}">
-                            {{\App\CPU\translate('privacy_policy')}}
-                        </a>
-                    </div>
-
-                </div>
-            </div>
+            </aside>
+            <aside class="widget widget_footer">
+                <h4 class="widget-title">Quick links</h4>
+                <ul class="ps-list--link">
+                    <li><a href="{{route('privacy-policy')}}">Privacy & Policy</a></li>
+                    <li><a href="{{route('terms')}}">Term & Condition</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="{{route('helpTopic')}}">FAQs</a></li>
+                </ul>
+            </aside>
+            <aside class="widget widget_footer">
+                <h4 class="widget-title">Company</h4>
+                <ul class="ps-list--link">
+                    <li><a href="{{route('about-us')}}">About Us</a></li>
+{{--                    <li><a href="#">Affilate</a></li>--}}
+{{--                    <li><a href="#">Career</a></li>--}}
+                    <li><a href="{{route('contacts')}}">Contact</a></li>
+                </ul>
+            </aside>
+            <aside class="widget widget_footer">
+                <h4 class="widget-title">Bussiness</h4>
+                <ul class="ps-list--link">
+                    <li><a href="#">Our Press</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="my-account.html">My account</a></li>
+                    <li><a href="shop-default.html">Shop</a></li>
+                </ul>
+            </aside>
         </div>
-        <!-- Grid row -->
+        <div class="ps-footer__links">
+            @php($categories=\App\Model\Category::with(['childes.childes'])->where('position', 0)->priority()->paginate(11))
+            @foreach($categories as $key=>$category)
+                <p>
+                    <strong>{{$category['name']}}:</strong>
+                    @if ($category->childes->count() > 0)
+                        @foreach($category['childes'] as $subCategory)
+                            <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">{{$subCategory['name']}}</a>
+                        @endforeach
+                    @else
+                        <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">{{$category['name']}}</a>
+                    @endif
+
+                </p>
+            @endforeach
+
+        </div>
+        <div class="ps-footer__copyright">
+            <p>{{ $web_config['copyright_text']->value }} All Rights Reserved</p>
+            <p>
+                <span>We Using Safe Payment For:</span>
+                <a href="#"><i class="fa-brands fa-cc-stripe fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-cc-mastercard fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-cc-visa fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-cc-paypal fa-2x"></i></a>
+            </p>
+        </div>
     </div>
-    <!-- Footer Links -->
 </footer>
+
+
+<div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
+    <div class="ps-search__content">
+        <form class="ps-form--primary-search" action="https://nouthemes.net/html/martfury/do_action" method="post">
+            <input class="form-control" type="text" placeholder="Search for...">
+            <button><i class="aroma-magnifying-glass"></i></button>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="product-quickview" tabindex="-1" role="dialog" aria-labelledby="product-quickview"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content"><span class="modal-close" data-dismiss="modal"><i class="icon-cross2"></i></span>
+            <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
+                <div class="ps-product__header">
+                    <div class="ps-product__thumbnail" data-vertical="false">
+                        <div class="ps-product__images" data-arrow="true">
+                            <div class="item"><img src="img/products/detail/fullwidth/1.jpg" alt=""></div>
+                            <div class="item"><img src="img/products/detail/fullwidth/2.jpg" alt=""></div>
+                            <div class="item"><img src="img/products/detail/fullwidth/3.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="ps-product__info">
+                        <h1>Marshall Kilburn Portable Wireless Speaker</h1>
+                        <div class="ps-product__meta">
+                            <p>Brand:<a href="shop-default.html">Sony</a></p>
+                            <div class="ps-product__rating">
+                                <select class="ps-rating" data-read-only="true">
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                    <option value="2">5</option>
+                                </select><span>(1 review)</span>
+                            </div>
+                        </div>
+                        <h4 class="ps-product__price">$36.78 – $56.99</h4>
+                        <div class="ps-product__desc">
+                            <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                            <ul class="ps-list--dot">
+                                <li> Unrestrained and portable active stereo speaker</li>
+                                <li> Free from the confines of wires and chords</li>
+                                <li> 20 hours of portable capabilities</li>
+                                <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
+                                <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+                            </ul>
+                        </div>
+                        <div class="ps-product__shopping"><a class="ps-btn ps-btn--black" href="#">Add to cart</a><a
+                                class="ps-btn" href="#">Buy Now</a>
+                            <div class="ps-product__actions"><a href="#"><i class="icon-heart"></i></a><a href="#"><i
+                                        class="icon-chart-bars"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
 

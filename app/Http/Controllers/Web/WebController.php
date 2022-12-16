@@ -60,7 +60,7 @@ class WebController extends Controller
         $brand_setting = BusinessSetting::where('type', 'product_brand')->first()->value;
         $home_categories = Category::where('home_status', true)->priority()->get();
         $home_categories->map(function ($data) {
-            $id = '"'.$data['id'].'"';
+            $id = '"' . $data['id'] . '"';
             $data['products'] = Product::active()
                 ->where('category_ids', 'like', "%{$id}%")
                 /*->whereJsonContains('category_ids', ["id" => (string)$data['id']])*/
@@ -114,30 +114,30 @@ class WebController extends Controller
         $deal_of_the_day = DealOfTheDay::join('products', 'products.id', '=', 'deal_of_the_days.product_id')->select('deal_of_the_days.*', 'products.unit_price')->where('products.status', 1)->where('deal_of_the_days.status', 1)->first();
 
         return view('web-views.home',
-                    compact('featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands', 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting')
-                );
+            compact('featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands', 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting')
+        );
     }
 
     public function flash_deals($id)
     {
-        $deal = FlashDeal::with(['products.product.reviews', 'products.product' => function($query){
-                $query->active();
-            }])
+        $deal = FlashDeal::with(['products.product.reviews', 'products.product' => function ($query) {
+            $query->active();
+        }])
             ->where(['id' => $id, 'status' => 1])
             ->whereDate('start_date', '<=', date('Y-m-d'))
             ->whereDate('end_date', '>=', date('Y-m-d'))
             ->first();
 
-            $discountPrice = FlashDealProduct::with(['product'])->whereHas('product', function ($query) {
-                $query->active();
-            })->get()->map(function ($data) {
-                return [
-                    'discount' => $data->discount,
-                    'sellPrice' => $data->product->unit_price,
-                    'discountedPrice' => $data->product->unit_price - $data->discount,
+        $discountPrice = FlashDealProduct::with(['product'])->whereHas('product', function ($query) {
+            $query->active();
+        })->get()->map(function ($data) {
+            return [
+                'discount' => $data->discount,
+                'sellPrice' => $data->product->unit_price,
+                'discountedPrice' => $data->product->unit_price - $data->discount,
 
-                ];
-            })->toArray();
+            ];
+        })->toArray();
 
 
         // dd($deal->toArray());
@@ -184,9 +184,8 @@ class WebController extends Controller
 
     public function all_sellers()
     {
-        $business_mode=Helpers::get_business_settings('business_mode');
-        if(isset($business_mode) && $business_mode=='single')
-        {
+        $business_mode = Helpers::get_business_settings('business_mode');
+        if (isset($business_mode) && $business_mode == 'single') {
             Toastr::warning(translate('access_denied!!'));
             return back();
         }
@@ -210,7 +209,7 @@ class WebController extends Controller
             'name.required' => 'Product name is required!',
         ]);
 
-        $result = ProductManager::search_products_web($request['name']);
+        $result = ProductManager::search_products_web("tea");
         $products = $result['products'];
 
         if ($products == null) {
@@ -231,28 +230,27 @@ class WebController extends Controller
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
 
         $physical_product = false;
-        foreach($carts as $cart){
-            if($cart->product_type == 'physical'){
+        foreach ($carts as $cart) {
+            if ($cart->product_type == 'physical') {
                 $physical_product = true;
             }
         }
 
-        foreach($carts as $cart)
-        {
+        foreach ($carts as $cart) {
             if ($shippingMethod == 'inhouse_shipping') {
-                $admin_shipping = ShippingType::where('seller_id',0)->first();
-                $shipping_type = isset($admin_shipping)==true?$admin_shipping->shipping_type:'order_wise';
+                $admin_shipping = ShippingType::where('seller_id', 0)->first();
+                $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
             } else {
-                if($cart->seller_is == 'admin'){
-                    $admin_shipping = ShippingType::where('seller_id',0)->first();
-                    $shipping_type = isset($admin_shipping)==true?$admin_shipping->shipping_type:'order_wise';
-                }else{
-                    $seller_shipping = ShippingType::where('seller_id',$cart->seller_id)->first();
-                    $shipping_type = isset($seller_shipping)==true?$seller_shipping->shipping_type:'order_wise';
+                if ($cart->seller_is == 'admin') {
+                    $admin_shipping = ShippingType::where('seller_id', 0)->first();
+                    $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
+                } else {
+                    $seller_shipping = ShippingType::where('seller_id', $cart->seller_id)->first();
+                    $shipping_type = isset($seller_shipping) == true ? $seller_shipping->shipping_type : 'order_wise';
                 }
             }
 
-            if($shipping_type == 'order_wise'){
+            if ($shipping_type == 'order_wise') {
                 $cart_shipping = CartShipping::where('cart_group_id', $cart->cart_group_id)->first();
                 if (!isset($cart_shipping)) {
                     Toastr::info(translate('select_shipping_method_first'));
@@ -279,24 +277,23 @@ class WebController extends Controller
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
 
         $cod_show = false;
-        foreach($carts as $cart)
-        {
-            if($cart->product_type == 'physical'){
+        foreach ($carts as $cart) {
+            if ($cart->product_type == 'physical') {
                 $cod_show = true;
             }
             if ($shippingMethod == 'inhouse_shipping') {
-                $admin_shipping = ShippingType::where('seller_id',0)->first();
-                $shipping_type = isset($admin_shipping)==true?$admin_shipping->shipping_type:'order_wise';
+                $admin_shipping = ShippingType::where('seller_id', 0)->first();
+                $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
             } else {
-                if($cart->seller_is == 'admin'){
-                    $admin_shipping = ShippingType::where('seller_id',0)->first();
-                    $shipping_type = isset($admin_shipping)==true?$admin_shipping->shipping_type:'order_wise';
-                }else{
-                    $seller_shipping = ShippingType::where('seller_id',$cart->seller_id)->first();
-                    $shipping_type = isset($seller_shipping)==true?$seller_shipping->shipping_type:'order_wise';
+                if ($cart->seller_is == 'admin') {
+                    $admin_shipping = ShippingType::where('seller_id', 0)->first();
+                    $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
+                } else {
+                    $seller_shipping = ShippingType::where('seller_id', $cart->seller_id)->first();
+                    $shipping_type = isset($seller_shipping) == true ? $seller_shipping->shipping_type : 'order_wise';
                 }
             }
-            if($shipping_type == 'order_wise'){
+            if ($shipping_type == 'order_wise') {
                 $cart_shipping = CartShipping::where('cart_group_id', $cart->cart_group_id)->first();
                 if (!isset($cart_shipping)) {
                     Toastr::info(translate('select_shipping_method_first'));
@@ -315,7 +312,7 @@ class WebController extends Controller
 
     public function checkout_complete(Request $request)
     {
-        if($request->payment_method != 'cash_on_delivery'){
+        if ($request->payment_method != 'cash_on_delivery') {
             return back()->with('error', 'Something went wrong!');
         }
         $unique_id = OrderManager::gen_unique_id();
@@ -324,13 +321,13 @@ class WebController extends Controller
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
 
         $physical_product = false;
-        foreach($carts as $cart){
-            if($cart->product_type == 'physical'){
+        foreach ($carts as $cart) {
+            if ($cart->product_type == 'physical') {
                 $physical_product = true;
             }
         }
 
-        if($physical_product) {
+        if ($physical_product) {
             foreach ($cart_group_ids as $group_id) {
                 $data = [
                     'payment_method' => 'cash_on_delivery',
@@ -352,15 +349,15 @@ class WebController extends Controller
 
         return back()->with('error', 'Something went wrong!');
     }
+
     public function checkout_complete_wallet(Request $request = null)
     {
         $cartTotal = CartManager::cart_grand_total();
         $user = Helpers::get_customer($request);
-        if( $cartTotal > $user->wallet_balance)
-        {
+        if ($cartTotal > $user->wallet_balance) {
             Toastr::warning(translate('inefficient balance in your wallet to pay for this order!!'));
             return back();
-        }else{
+        } else {
             $unique_id = OrderManager::gen_unique_id();
             $order_ids = [];
             foreach (CartManager::get_cart_group_ids() as $group_id) {
@@ -376,7 +373,7 @@ class WebController extends Controller
                 array_push($order_ids, $order_id);
             }
 
-            CustomerManager::create_wallet_transaction($user->id, Convert::default($cartTotal), 'order_place','order payment');
+            CustomerManager::create_wallet_transaction($user->id, Convert::default($cartTotal), 'order_place', 'order payment');
             CartManager::cart_clean();
         }
 
@@ -404,17 +401,16 @@ class WebController extends Controller
 
     public function seller_shop(Request $request, $id)
     {
-        $business_mode=Helpers::get_business_settings('business_mode');
+        $business_mode = Helpers::get_business_settings('business_mode');
 
         $active_seller = Seller::approved()->find($id);
 
-        if(($id != 0) && empty($active_seller)) {
+        if (($id != 0) && empty($active_seller)) {
             Toastr::warning(translate('not_found'));
             return redirect('/');
         }
 
-        if($id!=0 && $business_mode == 'single')
-        {
+        if ($id != 0 && $business_mode == 'single') {
             Toastr::error(translate('access_denied!!'));
             return back();
         }
@@ -431,11 +427,11 @@ class WebController extends Controller
 
         $avg_rating = Review::whereIn('product_id', $product_ids)->avg('rating');
         $total_review = Review::whereIn('product_id', $product_ids)->count();
-        if($id == 0){
-            $total_order = Order::where('seller_is','admin')->where('order_type','default_type')->count();
-        }else{
+        if ($id == 0) {
+            $total_order = Order::where('seller_is', 'admin')->where('order_type', 'default_type')->count();
+        } else {
             $seller = Seller::find($id);
-            $total_order = $seller->orders->where('seller_is','seller')->where('order_type','default_type')->count();
+            $total_order = $seller->orders->where('seller_is', 'seller')->where('order_type', 'default_type')->count();
         }
 
 
@@ -539,6 +535,7 @@ class WebController extends Controller
         return view('web-views.shop-page', compact('products', 'shop'))->with('seller_id', $id);
     }
 
+
     public function quick_view(Request $request)
     {
         $product = ProductManager::get_product($request->product_id);
@@ -638,8 +635,8 @@ class WebController extends Controller
         }
 
         if ($request['data_from'] == 'featured_deal') {
-            $featured_deal_id = FlashDeal::where(['status'=>1])->where(['deal_type'=>'feature_deal'])->pluck('id')->first();
-            $featured_deal_product_ids = FlashDealProduct::where('flash_deal_id',$featured_deal_id)->pluck('product_id')->toArray();
+            $featured_deal_id = FlashDeal::where(['status' => 1])->where(['deal_type' => 'feature_deal'])->pluck('id')->first();
+            $featured_deal_product_ids = FlashDealProduct::where('flash_deal_id', $featured_deal_id)->pluck('product_id')->toArray();
             $query = Product::with(['reviews'])->active()->whereIn('id', $featured_deal_product_ids);
         }
 
@@ -651,8 +648,7 @@ class WebController extends Controller
                 }
             })->pluck('id');
 
-            if($product_ids->count()==0)
-            {
+            if ($product_ids->count() == 0) {
                 $product_ids = Translation::where('translationable_type', 'App\Model\Product')
                     ->where('key', 'name')
                     ->where(function ($q) use ($key) {
@@ -706,7 +702,7 @@ class WebController extends Controller
         if ($request->ajax()) {
 
             return response()->json([
-                'total_product'=>$products->total(),
+                'total_product' => $products->total(),
                 'view' => view('web-views.products._ajax-products', compact('products'))->render()
             ], 200);
         }
@@ -715,9 +711,9 @@ class WebController extends Controller
         }
         if ($request['data_from'] == 'brand') {
             $brand_data = Brand::active()->find((int)$request['id']);
-            if($brand_data) {
+            if ($brand_data) {
                 $data['brand_name'] = $brand_data->name;
-            }else {
+            } else {
                 Toastr::warning(translate('not_found'));
                 return redirect('/');
             }
@@ -859,7 +855,7 @@ class WebController extends Controller
         $brand_setting = BusinessSetting::where('type', 'product_brand')->first()->value;
         $digital_product_setting = BusinessSetting::where('type', 'digital_product')->first()->value;
 
-        $wishlists = Wishlist::whereHas('wishlistProduct',function($q){
+        $wishlists = Wishlist::whereHas('wishlistProduct', function ($q) {
             return $q;
         })->where('customer_id', auth('customer')->id())->get();
         return view('web-views.users-profile.account-wishlist', compact('wishlists', 'brand_setting'));
@@ -877,7 +873,7 @@ class WebController extends Controller
                     $wishlist->product_id = $request->product_id;
                     $wishlist->save();
 
-                    $countWishlist = Wishlist::whereHas('wishlistProduct',function($q){
+                    $countWishlist = Wishlist::whereHas('wishlistProduct', function ($q) {
                         return $q;
                     })->where('customer_id', auth('customer')->id())->get();
 
@@ -1033,7 +1029,7 @@ class WebController extends Controller
         $builder->build($width = 100, $height = 40, $font = null);
         $phrase = $builder->getPhrase();
 
-        if(Session::has('default_captcha_code')) {
+        if (Session::has('default_captcha_code')) {
             Session::forget('default_captcha_code');
         }
         Session::put('default_captcha_code', $phrase);
@@ -1054,14 +1050,14 @@ class WebController extends Controller
     {
         $order_data = OrderDetail::with('order.customer')->find($id);
         $customer_id = auth('customer')->id();
-        if($order_data->order->customer->id != $customer_id){
+        if ($order_data->order->customer->id != $customer_id) {
             Toastr::info(translate('Invalid customer'));
             return redirect('/');
         }
 
-        if( $order_data->product->digital_product_type == 'ready_product' && $order_data->product->digital_file_ready) {
-            $file_path = storage_path('app/public/product/digital-product/' .$order_data->product->digital_file_ready);
-        }else{
+        if ($order_data->product->digital_product_type == 'ready_product' && $order_data->product->digital_file_ready) {
+            $file_path = storage_path('app/public/product/digital-product/' . $order_data->product->digital_file_ready);
+        } else {
             $file_path = storage_path('app/public/product/digital-product/' . $order_data->digital_file_after_sell);
         }
 
@@ -1070,12 +1066,11 @@ class WebController extends Controller
 
     public function subscription(Request $request)
     {
-        $subscription_email = Subscription::where('email',$request->subscription_email)->first();
-        if(isset($subscription_email))
-        {
+        $subscription_email = Subscription::where('email', $request->subscription_email)->first();
+        if (isset($subscription_email)) {
             Toastr::info(translate('You already subcribed this site!!'));
             return back();
-        }else{
+        } else {
             $new_subcription = new Subscription;
             $new_subcription->email = $request->subscription_email;
             $new_subcription->save();
@@ -1086,15 +1081,16 @@ class WebController extends Controller
         }
 
     }
+
     public function review_list_product(Request $request)
     {
 
-        $productReviews =Review::where('product_id',$request->product_id)->latest()->paginate(2, ['*'], 'page', $request->offset);
+        $productReviews = Review::where('product_id', $request->product_id)->latest()->paginate(2, ['*'], 'page', $request->offset);
 
 
         return response()->json([
-            'productReview'=> view('web-views.partials.product-reviews',compact('productReviews'))->render(),
-            'not_empty'=>$productReviews->count()
+            'productReview' => view('web-views.partials.product-reviews', compact('productReviews'))->render(),
+            'not_empty' => $productReviews->count()
         ]);
     }
 }
