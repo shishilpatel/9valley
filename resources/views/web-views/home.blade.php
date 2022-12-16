@@ -1321,9 +1321,10 @@
                     <div class="col-md-3 col-12 pl-3 pr-3">
                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}"
                            style="cursor: pointer;">
-                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"
-                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">
+{{--                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"--}}
+{{--                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
+{{--                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">--}}
+                            <i class="{{ $category->fa_icon }} fa-5x"></i>
                         </a>
                     </div>
                     <div class="col-md-9 col-12 ">
