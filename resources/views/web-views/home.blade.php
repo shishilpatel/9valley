@@ -963,7 +963,7 @@
 {{--                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
 {{--                                                    src="{{asset("storage/app/public/category/$category->icon")}}"--}}
 {{--                                                    alt="{{$category->name}}">--}}
-                                                <i class="{{$category->fa_icon}} fa-3x"></i>
+                                                <i class="{{$category->fa_icon}} fa-5x"></i>
                                                 <p class="text-center small "
                                                    style="margin-top: 5px">{{Str::limit($category->name, 12)}}</p>
                                             </a>
@@ -1324,7 +1324,7 @@
 {{--                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"--}}
 {{--                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
 {{--                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">--}}
-                            <i class="{{ $category->fa_icon }} fa-5x"></i>
+                            <i class="{{ $category->fa_icon }} fa-5x" style="color: #fcb800"></i>
                         </a>
                     </div>
                     <div class="col-md-9 col-12 ">
