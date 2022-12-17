@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        @yield('title')
+        @yield('title') | Yeap®Cart
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="180x180"
@@ -12,7 +12,7 @@
           href="{{asset('storage/app/public/company')}}/{{$web_config['fav_icon']->value}}">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
-          rel="stylesheet">
+          rel="stylesheet" defer>
     <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/fonts/Linearicons/Linearicons/Font/demo-files/demo.css')}}">
@@ -41,7 +41,7 @@
     @php($google_tag_manager_id = \App\CPU\Helpers::get_business_settings('google_tag_manager_id'))
     @if($google_tag_manager_id )
         <!-- Google Tag Manager -->
-        <script>(function (w, d, s, l, i) {
+        <script defer>(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
                 w[l].push({
                     'gtm.start':
@@ -61,7 +61,7 @@
     @php($pixel_analytices_user_code =\App\CPU\Helpers::get_business_settings('pixel_analytics'))
     @if($pixel_analytices_user_code)
         <!-- Facebook Pixel Code -->
-        <script>
+        <script defer>
             !function (f, b, e, v, n, t, s) {
                 if (f.fbq) return;
                 n = f.fbq = function () {
@@ -143,14 +143,13 @@
 <!-- Footer-->
 @include('layouts.front-end.partials._footer')
 <!-- Toolbar for handheld devices-->
-<!--<div class="cz-handheld-toolbar" id="toolbar">
-    {{--@include('layouts.front-end.partials._toolbar')--}}
-</div>-->
+{{--<div class="cz-handheld-toolbar" id="toolbar">--}}
+{{--    @include('layouts.front-end.partials._toolbar')--}}
+{{--</div>--}}
 
 <!-- Back To Top Button-->
 <div id="back2top"><i class="icon icon-arrow-up"></i></div>
 <!-- Vendor scrits: js libraries and plugins-->
-
 
 {{--<script src="{{asset('public/assets/front-end')}}/vendor/jquery/dist/jquery.slim.min.js"></script>--}}
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

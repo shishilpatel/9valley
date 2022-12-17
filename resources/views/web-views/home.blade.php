@@ -1,15 +1,15 @@
 @extends('layouts.front-end.app')
 
-@section('title',\App\CPU\translate('Welcome To').' '.$web_config['name']->value)
+@section('title',$web_config['name']->value)
 
 @push('css_or_js')
     <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="og:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="og:title" content="{{$web_config['name']->value}} | Yeap®Cart"/>
     <meta property="og:url" content="{{env('APP_URL')}}">
     <meta property="og:description" content="{!! substr($web_config['about']->value,0,100) !!}">
 
     <meta property="twitter:card" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="twitter:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="twitter:title" content="Welcome  To {{$web_config['name']->value}} | Yeap®Cart"/>
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{!! substr($web_config['about']->value,0,100) !!}">
 
@@ -283,20 +283,28 @@
             .categories-view-all {
             {{session('direction') === "rtl" ? 'margin-left: 10px;' : 'margin-right: 6px;'}}
 
+
+
             }
 
             .categories-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 0px;' : 'margin-left: 6px;'}}
+
+
 
             }
 
             .seller-list-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 0px;' : 'margin-left: 10px;'}}
 
+
+
             }
 
             .seller-list-view-all {
             {{Session::get('direction') === "rtl" ? 'margin-left: 20px;' : 'margin-right: 10px;'}}
+
+
 
             }
 
@@ -307,10 +315,14 @@
             .category-product-view-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 16px;' : 'margin-left: -8px;'}}
 
+
+
             }
 
             .category-product-view-all {
             {{Session::get('direction') === "rtl" ? 'margin-left: -7px;' : 'margin-right: 5px;'}}
+
+
 
             }
 
@@ -336,35 +348,49 @@
             .categories-view-all {
             {{session('direction') === "rtl" ? 'margin-left: 30px;' : 'margin-right: 27px;'}}
 
+
+
             }
 
             .categories-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 25px;' : 'margin-left: 25px;'}}
+
+
 
             }
 
             .seller-list-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 6px;' : 'margin-left: 10px;'}}
 
+
+
             }
 
             .seller-list-view-all {
             {{Session::get('direction') === "rtl" ? 'margin-left: 12px;' : 'margin-right: 10px;'}}
+
+
 
             }
 
             .seller-card {
             {{Session::get('direction') === "rtl" ? 'padding-left:0px !important;' : 'padding-right:0px !important;'}}
 
+
+
             }
 
             .category-product-view-title {
             {{Session::get('direction') === "rtl" ? 'margin-right: 10px;' : 'margin-left: -12px;'}}
 
+
+
             }
 
             .category-product-view-all {
             {{Session::get('direction') === "rtl" ? 'margin-left: -20px;' : 'margin-right: 0px;'}}
+
+
 
             }
 
@@ -475,7 +501,7 @@
         }
 
         .view-all-text {
-            color: {{$web_config['secondary_color']}}  !important;
+            color: {{$web_config['secondary_color']}}    !important;
             font-size: 14px;
         }
 
@@ -958,11 +984,11 @@
                                     @if ($key<10)
                                         <div class="text-center" style="margin: 5px;">
                                             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
-{{--                                                <img--}}
-{{--                                                    style="vertical-align: middle; height: 100px;width: 100px;border-radius: 5px;"--}}
-{{--                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
-{{--                                                    src="{{asset("storage/app/public/category/$category->icon")}}"--}}
-{{--                                                    alt="{{$category->name}}">--}}
+                                                {{--                                                <img--}}
+                                                {{--                                                    style="vertical-align: middle; height: 100px;width: 100px;border-radius: 5px;"--}}
+                                                {{--                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
+                                                {{--                                                    src="{{asset("storage/app/public/category/$category->icon")}}"--}}
+                                                {{--                                                    alt="{{$category->name}}">--}}
                                                 <i class="{{$category->fa_icon}} fa-5x"></i>
                                                 <p class="text-center small "
                                                    style="margin-top: 5px">{{Str::limit($category->name, 12)}}</p>
@@ -1321,9 +1347,9 @@
                     <div class="col-md-3 col-12 pl-3 pr-3">
                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}"
                            style="cursor: pointer;">
-{{--                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"--}}
-{{--                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
-{{--                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">--}}
+                            {{--                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"--}}
+                            {{--                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
+                            {{--                                 src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">--}}
                             <i class="{{ $category->fa_icon }} fa-5x" style="color: #fcb800"></i>
                         </a>
                     </div>
