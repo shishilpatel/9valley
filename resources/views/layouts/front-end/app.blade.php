@@ -13,7 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
           rel="stylesheet" defer>
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/font-awesome/css/font-awesome.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/font-awesome/css/font-awesome.min.css')}}">--}}
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/fonts/Linearicons/Linearicons/Font/demo-files/demo.css')}}">
     <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/bootstrap/css/bootstrap.min.css')}}">

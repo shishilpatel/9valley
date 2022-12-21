@@ -1345,7 +1345,7 @@
                 </div>
 
                 <div class="row mt-2 mb-3 d-flex justify-content-between">
-                    <div class="col-md-3 col-12 pl-3 pr-3">
+                    <div class="col-md-3 col-12">
                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}"
                            style="cursor: pointer;">
                             {{--                            <img class="" style="width: 100%; border-radius:5px;height: 300px;"--}}
