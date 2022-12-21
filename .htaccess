@@ -30,4 +30,4 @@
     Order allow,deny
     Deny from all
 </Files>
-ErrorDocument 404 https://www.yeapcart.com
+ErrorDocument 404 /
