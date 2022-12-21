@@ -1090,14 +1090,14 @@
 
     <div class="container rtl mt-3">
         <div class="row d-flex justify-content-center">
-            <div style="height: 90px;width:90px;">
+            <div style="width:110px;margin-top:10px;">
                 <img src="{{asset("public/assets/front-end/png/new-arrivals.png")}}"
                      alt="">
 
             </div>
-            <div style="margin-top:24px;font-weight: 700;font-size: 26px;">
-                <p style="float: right">{{ \App\CPU\translate('ARRIVALS')}}</p>
-            </div>
+{{--            <div style="margin-top:24px;font-weight: 700;font-size: 26px;">--}}
+{{--                <p style="float: right">{{ \App\CPU\translate('ARRIVALS')}}</p>--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="container rtl mb-3" style="">
