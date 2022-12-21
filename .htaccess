@@ -3,8 +3,7 @@
         Options -MultiViews -Indexes
     </IfModule>
     RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^www\.yeapcart\.com [NC]
-    RewriteRule ^(.*)$ https://yeapcart.com/$1 [L,R=301]
+    
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
