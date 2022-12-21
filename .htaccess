@@ -30,4 +30,6 @@
     Order allow,deny
     Deny from all
 </Files>
-ErrorDocument 404 /
+
+ErrorDocument 404 "<H1>Page not found</H1>"
+

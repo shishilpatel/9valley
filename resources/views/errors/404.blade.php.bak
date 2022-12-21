@@ -4,7 +4,7 @@
 
     echo '<html>
             <head>
-                <meta http-equiv="Refresh" content="0;url=/" />
+                <meta http-equiv="Refresh" content="0;url=https://yeapcart.com/" />
             </head><body></body>
           </html>';
 ?>
