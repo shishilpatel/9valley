@@ -58,7 +58,7 @@
         }
 
         .search_button .input-group-text i {
-            color: {{$web_config['primary_color']}}                                               !important;
+            color: {{$web_config['primary_color']}}                                                     !important;
         }
 
         .navbar-expand-md .dropdown-menu > .dropdown > .dropdown-toggle {
@@ -68,12 +68,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                               !important;
+            color: {{$web_config['primary_color']}}                                                     !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                                               !important;
+            color: {{$web_config['primary_color']}}                                                     !important;
         }
     }
 
@@ -96,12 +96,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                               !important;
+            color: {{$web_config['primary_color']}}                                                     !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                  !important;
+            color: {{$web_config['primary_color']}}                        !important;
         }
     }
 
@@ -130,42 +130,35 @@
                     <div class="menu__toggle"><i class="icon-menu"></i><span> Shop by Department</span></div>
                     <div class="menu__content">
                         <ul class="menu--dropdown">
-                            <li>
-                                <a href="#"><i class="icon-star"></i> Hot Promotions</a>
-                            </li>
-                            <li class="menu-item-has-children has-mega-menu"><a href="#"><i class="icon-laundry"></i>
-                                    Consumer Electronic</a>
-                                <div class="mega-menu">
-                                    <div class="mega-menu__column">
-                                        <h4>Electronic<span class="sub-toggle"></span></h4>
-                                        <ul class="mega-menu__list">
-                                            <li><a href="#">Home Audio &amp; Theathers</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="mega-menu__column">
-                                        <h4>Accessories &amp; Parts<span class="sub-toggle"></span></h4>
-                                        <ul class="mega-menu__list">
-                                            <li><a href="#">Digital Cables</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="menu-item-has-children has-mega-menu"><a href="#"><i class="icon-desktop"></i>
-                                    Computer &amp; Technology</a>
-                                <div class="mega-menu">
-                                    <div class="mega-menu__column">
-                                        <h4>Computer &amp; Technologies<span class="sub-toggle"></span></h4>
-                                        <ul class="mega-menu__list">
-                                            <li><a href="#">Computer &amp; Tablets</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><a href="#"><i class="icon-baby-bottle"></i> Babies &amp; Moms</a>
-                            </li>
+                            @php($categories=\App\Model\Category::with(['childes.childes'])->where('position', 0)->priority()->paginate(11))
+                            @foreach($categories as $key=>$category)
+                                @if ($category->childes->count() > 0)
+                                    <li class="menu-item-has-children has-mega-menu">
+                                        <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                                            <i class="{{$category['fa_icon']}} fa-2x"></i> {{$category['name']}}
+                                        </a>
+                                        <div class="mega-menu">
+
+                                            <div class="mega-menu__column">
+                                                <ul class="mega-menu__list">
+                                                    @foreach($category['childes'] as $subCategory)
+                                                        <li>
+                                                            <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">{{$subCategory['name']}}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                @else
+                                    <li>
+                                        <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}"><i
+                                                class="{{$category['fa_icon']}} fa-2x"></i> {{$category['name']}}</a>
+                                    </li>
+
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -173,21 +166,22 @@
                     <img style="width: 50%"
                          src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
                          onerror="this.src='{{asset('public/theme/martfury/img/Yeapcart.png')}}'"
-                         alt="{{$web_config['name']->value}}" alt="{{$web_config['name']->value}} | Yeap&#169;Cart "></a>
+                         alt="{{$web_config['name']->value}}"
+                         alt="{{$web_config['name']->value}} | Yeap&#169;Cart "></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search search_form" action="{{route('products')}}"
                       method="get">
-                    <div class="form-group--icon"><i class="icon-chevron-down"></i>
-                        <select class="form-control">
-                            <option value="1">All</option>
-                            <option value="1">Bags</option>
-                            <option value="1">Shoes</option>
-                            <option value="1">Men</option>
-                            <option value="1">Women</option>
-                            <option value="1">Sunglasses</option>
-                        </select>
-                    </div>
+                    {{--                    <div class="form-group--icon"><i class="icon-chevron-down"></i>--}}
+                    {{--                        <select class="form-control">--}}
+                    {{--                            <option value="1">All</option>--}}
+                    {{--                            <option value="1">Bags</option>--}}
+                    {{--                            <option value="1">Shoes</option>--}}
+                    {{--                            <option value="1">Men</option>--}}
+                    {{--                            <option value="1">Women</option>--}}
+                    {{--                            <option value="1">Sunglasses</option>--}}
+                    {{--                        </select>--}}
+                    {{--                    </div>--}}
                     <input class="form-control appended-form-control search-bar-input" type="text" name="name"
                            placeholder="I'm shopping for...">
                     <input name="data_from" value="search" hidden>
@@ -504,95 +498,50 @@
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">
-            <li><a href="#">Hot Promotions</a>
-            </li>
-            <li class="menu-item-has-children has-mega-menu"><a href="#">Consumer Electronic</a><span
-                    class="sub-toggle"></span>
-                <div class="mega-menu">
-                    <div class="mega-menu__column">
-                        <h4>Electronic<span class="sub-toggle"></span></h4>
-                        <ul class="mega-menu__list">
-                            <li><a href="#">Home Audio &amp; Theathers</a>
-                            </li>
-                            <li><a href="#">TV &amp; Videos</a>
-                            </li>
-                            <li><a href="#">Camera, Photos &amp; Videos</a>
-                            </li>
-                            <li><a href="#">Cellphones &amp; Accessories</a>
-                            </li>
-                            <li><a href="#">Headphones</a>
-                            </li>
-                            <li><a href="#">Videosgames</a>
-                            </li>
-                            <li><a href="#">Wireless Speakers</a>
-                            </li>
-                            <li><a href="#">Office Electronic</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mega-menu__column">
-                        <h4>Accessories &amp; Parts<span class="sub-toggle"></span></h4>
-                        <ul class="mega-menu__list">
-                            <li><a href="#">Digital Cables</a>
-                            </li>
-                            <li><a href="#">Audio &amp; Video Cables</a>
-                            </li>
-                            <li><a href="#">Batteries</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li><a href="#">Clothing &amp; Apparel</a>
-            </li>
-            <li><a href="#">Home, Garden &amp; Kitchen</a>
-            </li>
-            <li><a href="#">Health &amp; Beauty</a>
-            </li>
-            <li><a href="#">Yewelry &amp; Watches</a>
-            </li>
-            <li class="menu-item-has-children has-mega-menu"><a href="#">Computer &amp; Technology</a><span
-                    class="sub-toggle"></span>
-                <div class="mega-menu">
-                    <div class="mega-menu__column">
-                        <h4>Computer &amp; Technologies<span class="sub-toggle"></span></h4>
-                        <ul class="mega-menu__list">
-                            <li><a href="#">Computer &amp; Tablets</a>
-                            </li>
-                            <li><a href="#">Laptop</a>
-                            </li>
-                            <li><a href="#">Monitors</a>
-                            </li>
-                            <li><a href="#">Networking</a>
-                            </li>
-                            <li><a href="#">Drive &amp; Storages</a>
-                            </li>
-                            <li><a href="#">Computer Components</a>
-                            </li>
-                            <li><a href="#">Security &amp; Protection</a>
-                            </li>
-                            <li><a href="#">Gaming Laptop</a>
-                            </li>
-                            <li><a href="#">Accessories</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li><a href="#">Babies &amp; Moms</a>
-            </li>
-            <li><a href="#">Sport &amp; Outdoor</a>
-            </li>
-            <li><a href="#">Phones &amp; Accessories</a>
-            </li>
-            <li><a href="#">Books &amp; Office</a>
-            </li>
-            <li><a href="#">Cars &amp; Motocycles</a>
-            </li>
-            <li><a href="#">Home Improments</a>
-            </li>
-            <li><a href="#">Vouchers &amp; Services</a>
-            </li>
+            @php($categories=\App\Model\Category::with(['childes.childes'])->where('position', 0)->priority()->paginate(11))
+            @foreach($categories as $key=>$category)
+
+                @if ($category->childes->count() > 0)
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">{{$category['name']}}</a>
+                        <span class="sub-toggle"></span>
+                        @foreach($category['childes'] as $subCategory)
+                            <div class="mega-menu">
+                                <div class="mega-menu__column">
+                                    <a href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">{{$subCategory['name']}}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </li>
+                @else
+                    <li>
+                        <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">{{$category['name']}}</a>
+                    </li>
+
+                @endif
+            @endforeach
+
+            {{--            <li class="menu-item-has-children has-mega-menu">--}}
+            {{--                <a href="#">Consumer Electronic</a>--}}
+            {{--                <span class="sub-toggle"></span>--}}
+            {{--                <div class="mega-menu">--}}
+            {{--                    <div class="mega-menu__column">--}}
+            {{--                        <h4>Electronic<span class="sub-toggle"></span></h4>--}}
+            {{--                        <ul class="mega-menu__list">--}}
+            {{--                            <li><a href="#">Home Audio &amp; Theathers</a>--}}
+            {{--                            </li>--}}
+            {{--                        </ul>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="mega-menu__column">--}}
+            {{--                        <h4>Accessories &amp; Parts<span class="sub-toggle"></span></h4>--}}
+            {{--                        <ul class="mega-menu__list">--}}
+            {{--                            <li><a href="#">Digital Cables</a>--}}
+            {{--                            </li>--}}
+            {{--                        </ul>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </li>--}}
+
         </ul>
     </div>
 </div>
@@ -625,13 +574,15 @@
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">
-            <li class="menu-item-has-children"><a href="index.html">Home</a><span class="sub-toggle"></span>
-                <ul class="sub-menu">
-                    <li><a href="homepage-5.html">Home Marketplace V3</a>
-                    </li>
-                </ul>
-            </li>
-            </li>
+            <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
+            <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
+            <li class="menu-item"><a href="#">Blogs</a></li>
+            <li class="menu-item"><a href="{{route('privacy-policy')}}">Privacy & Policy</a></li>
+            <li class="menu-item"><a href="{{route('terms')}}">Term & Condition</a></li>
+            <li class="menu-item"><a href="#">Shipping Policy</a></li>
+            <li class="menu-item"><a href="#">Return Policy</a></li>
+            <li class="menu-item"><a href="{{route('helpTopic')}}">FAQs</a></li>
+
         </ul>
     </div>
 </div>
