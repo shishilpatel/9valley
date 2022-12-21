@@ -5,6 +5,7 @@
     RewriteEngine On
 
     RewriteCond %{HTTP_HOST} !^www\.
+    RewriteCond %{HTTP_HOST} !^*\.
     RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
     # Handle Authorization Header
