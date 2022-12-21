@@ -282,7 +282,7 @@
             }
 
             .categories-view-all {
-            {{session('direction') === "rtl" ? 'margin-left: 10px;' : 'margin-right: 6px;'}}
+                {{session('direction') === "rtl" ? 'margin-left: 10px;' : 'margin-right: 20px;'}}
 
 
 
@@ -783,7 +783,7 @@
     <div class="container rtl">
         <div class="row">
             {{-- Deal of the day/Recommended Product --}}
-            <div class="col-xl-3 col-md-4 pb-4 mt-3 pl-0 pr-0">
+            <div class="col-xl-3 col-md-4 pb-4 mt-3">
                 <div class="deal_of_the_day" style="background: {{$web_config['primary_color']}};">
                     @if(isset($deal_of_the_day) && isset($deal_of_the_day->product))
                         <div class="d-flex justify-content-center align-items-center" style="width: 70%;margin:auto;">
@@ -910,7 +910,7 @@
 
             </div>
             {{-- Latest products --}}
-            <div class="col-xl-9 col-md-8 mt-2 pl-0 pr-0">
+            <div class="col-xl-9 col-md-8 mt-2">
                 <div class="latest-product-margin"
                      style="margin-{{Session::get('direction') === "rtl" ? 'right:30px' : 'left:30px'}}">
                     <div class="d-flex justify-content-between">
@@ -946,7 +946,7 @@
     @if (isset($main_section_banner))
         <div class="container rtl mb-3">
             <div class="row">
-                <div class="col-12 pl-0 pr-0">
+                <div class="col-12">
                     <a href="{{$main_section_banner->url}}"
                        style="cursor: pointer;">
                         <img class="d-block footer_banner_img"
@@ -964,7 +964,7 @@
     <div class="container rtl">
         <div class="row">
             @if ($business_mode == 'multi')
-                <div class="col-md-6 {{Session::get('direction') === "rtl" ? 'pr-0' : 'pl-0'}}">
+                <div class="col-md-6">
                     <div class="card" style="min-height: 380px;">
                         <div class="card-body">
                             <div class="row d-flex justify-content-between">
@@ -1003,7 +1003,7 @@
                     </div>
                 </div>
             @else
-                <div class="col-md-12 pl-0 pr-0">
+                <div class="col-md-12">
                     <div class="card" style="min-height: 232px;">
                         <div class="card-body">
                             <div class="row d-flex justify-content-between">

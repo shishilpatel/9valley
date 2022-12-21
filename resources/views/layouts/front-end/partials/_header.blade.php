@@ -58,7 +58,7 @@
         }
 
         .search_button .input-group-text i {
-            color: {{$web_config['primary_color']}}                                                     !important;
+            color: {{$web_config['primary_color']}}                                                      !important;
         }
 
         .navbar-expand-md .dropdown-menu > .dropdown > .dropdown-toggle {
@@ -68,12 +68,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                                     !important;
+            color: {{$web_config['primary_color']}}                                                      !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                                                     !important;
+            color: {{$web_config['primary_color']}}                                                      !important;
         }
     }
 
@@ -96,12 +96,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                                     !important;
+            color: {{$web_config['primary_color']}}                                                      !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                        !important;
+            color: {{$web_config['primary_color']}}                         !important;
         }
     }
 
@@ -166,8 +166,7 @@
                     <img style="width: 50%"
                          src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
                          onerror="this.src='{{asset('public/theme/martfury/img/Yeapcart.png')}}'"
-                         alt="{{$web_config['name']->value}}"
-                         alt="{{$web_config['name']->value}} | Yeap&#169;Cart "></a>
+                         alt="{{$web_config['name']->value}} | YeapCart "></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search search_form" action="{{route('products')}}"
@@ -407,41 +406,73 @@
             <a class="ps-logo" href="/">
                 <img style="width: 44%" src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
                      onerror="this.src='{{asset('public/theme/martfury/img/Yeapcart.png')}}'"
-                     alt="{{$web_config['name']->value}}" alt="">
+                     alt="{{$web_config['name']->value}} | YeapCart" alt="">
             </a>
         </div>
         <div class="navigation__right">
             <div class="header__actions">
-                <div class="ps-cart--mini"><a class="header__extra" href="#"><i
-                            class="icon-bag2"></i><span><i>0</i></span></a>
-                    <div class="ps-cart__content">
-                        <div class="ps-cart__items">
-                            <div class="ps-product--cart-mobile">
-                                <div class="ps-product__thumbnail"><a href="#"><img src="img/products/clothing/7.jpg"
-                                                                                    alt=""></a></div>
-                                <div class="ps-product__content"><a class="ps-product__remove" href="#"><i
-                                            class="icon-cross"></i></a><a href="product-default.html">MVMTH Classical
-                                        Leather Watch In Black</a>
-                                    <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x $59.99</small>
-                                </div>
+                @php($cart=\App\CPU\CartManager::get_cart())
+                <div class="ps-cart--mini">
+                    <a class="header__extra" href="#">
+                        <i class="icon-bag2"></i><span><i>{{$cart->count()}}</i></span>
+                    </a>
+                    @if($cart->count() > 0)
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items">
+                                @php($sub_total=0)
+                                @php($total_tax=0)
+                                @foreach($cart as  $cartItem)
+                                    <div class="ps-product--cart-mobile">
+                                        <div class="ps-product__thumbnail"><a
+                                                href="{{route('product',$cartItem['slug'])}}"><img
+                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                    src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$cartItem['thumbnail']}}"
+                                                    alt=""></a></div>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__remove" href="#"
+                                               onclick="removeFromCart({{ $cartItem['id'] }})">
+                                                <i class="icon-cross"></i>
+                                            </a>
+                                            <a href="{{route('product',$cartItem['slug'])}}">{{Str::limit($cartItem['name'],30)}}</a>
+                                            @foreach(json_decode($cartItem['variations'],true) as $key =>$variation)
+                                                <span style="font-size: 14px">{{$key}} : {{$variation}}</span><br>
+                                            @endforeach
+                                            <div class="widget-product-meta">
+                                                    <span
+                                                        class="text-muted {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">x {{$cartItem['quantity']}}</span>
+                                                <span
+                                                    class="text-accent {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">
+                                                        {{\App\CPU\Helpers::currency_converter(($cartItem['price']-$cartItem['discount'])*$cartItem['quantity'])}}
+                                                     </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    @php($sub_total+=($cartItem['price']-$cartItem['discount'])*$cartItem['quantity'])
+                                    @php($total_tax+=$cartItem['tax']*$cartItem['quantity'])
+                                @endforeach
                             </div>
-                            <div class="ps-product--cart-mobile">
-                                <div class="ps-product__thumbnail"><a href="#"><img src="img/products/clothing/5.jpg"
-                                                                                    alt=""></a></div>
-                                <div class="ps-product__content"><a class="ps-product__remove" href="#"><i
-                                            class="icon-cross"></i></a><a href="product-default.html">Sleeve Linen Blend
-                                        Caro Pane Shirt</a>
-                                    <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x $59.99</small>
-                                </div>
+                            <div class="ps-cart__footer">
+                                <h3>Sub Total:<strong>{{\App\CPU\Helpers::currency_converter($sub_total)}}</strong>
+                                </h3>
+                                <figure>
+                                    <a class="ps-btn" href="{{route('shop-cart')}}">View Cart</a>
+                                    <a class="ps-btn" href="{{route('checkout-details')}}">Checkout</a>
+                                </figure>
                             </div>
                         </div>
-                        <div class="ps-cart__footer">
-                            <h3>Sub Total:<strong>$59.99</strong></h3>
-                            <figure><a class="ps-btn" href="shopping-cart.html">View Cart</a><a class="ps-btn"
-                                                                                                href="checkout.html">Checkout</a>
-                            </figure>
+                    @else
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items">
+
+                                <div class="ps-product--cart-mobile">
+                                    No products in the cart.
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <div class="ps-block--user-header">
                     <div class="ps-block__left"><i class="icon-user"></i></div>
@@ -472,24 +503,44 @@
         <h3>Shopping Cart</h3>
     </div>
     <div class="navigation__content">
-        <div class="ps-cart--mobile">
-            <div class="ps-cart__content">
-                <div class="ps-product--cart-mobile">
-                    <div class="ps-product__thumbnail"><a href="#"><img src="img/products/clothing/7.jpg" alt=""></a>
+        @if($cart->count() > 0)
+            <div class="ps-cart--mobile">
+                <div class="ps-cart__content">
+                    <div class="ps-product--cart-mobile">
+                        <div class="ps-product__thumbnail"><a href="#">
+                                <img src="img/products/clothing/7.jpg" alt=""></a>
+                        </div>
+                        <div class="ps-product__content">
+                            <a class="ps-product__remove" href="#">
+                                <i class="icon-cross"></i></a>
+                            <a href="{{route('product',$cartItem['slug'])}}">{{Str::limit($cartItem['name'],30)}}</a>
+                            @foreach(json_decode($cartItem['variations'],true) as $key =>$variation)
+                                <span style="font-size: 14px">{{$key}} : {{$variation}}</span><br>
+                            @endforeach
+{{--                            <p><strong>Sold by:</strong> YOUNG SHOP</p>--}}
+                            <small>{{$cartItem['quantity']}} x {{\App\CPU\Helpers::currency_converter(($cartItem['price']-$cartItem['discount'])*$cartItem['quantity'])}}</small>
+                        </div>
                     </div>
-                    <div class="ps-product__content"><a class="ps-product__remove" href="#"><i
-                                class="icon-cross"></i></a><a href="product-default.html">MVMTH Classical Leather Watch
-                            In Black</a>
-                        <p><strong>Sold by:</strong> YOUNG SHOP</p><small>1 x $59.99</small>
+                </div>
+                <div class="ps-cart__footer">
+                    <h3>Sub Total:<strong>{{\App\CPU\Helpers::currency_converter($sub_total)}}</strong></h3>
+                    <figure>
+                        <a class="ps-btn" href="shopping-cart.html">View Cart</a>
+                        <a class="ps-btn" href="checkout.html">Checkout</a>
+                    </figure>
+                </div>
+            </div>
+        @else
+            <div class="ps-cart--mobile">
+                <div class="ps-cart__content">
+                    <div class="ps-cart__items">
+                        <div class="ps-product--cart-mobile">
+                            No products in the cart.
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="ps-cart__footer">
-                <h3>Sub Total:<strong>$59.99</strong></h3>
-                <figure><a class="ps-btn" href="shopping-cart.html">View Cart</a><a class="ps-btn" href="checkout.html">Checkout</a>
-                </figure>
-            </div>
-        </div>
+        @endif
     </div>
 </div>
 <div class="ps-panel--sidebar" id="navigation-mobile">
