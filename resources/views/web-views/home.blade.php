@@ -3,6 +3,7 @@
 @section('title',$web_config['name']->value)
 
 @push('css_or_js')
+    <meta name="description" content="  ">
     <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
     <meta property="og:title" content="{{$web_config['name']->value}} | Yeap®Cart"/>
     <meta property="og:url" content="{{env('APP_URL')}}">
