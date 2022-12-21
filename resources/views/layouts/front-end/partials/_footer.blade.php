@@ -149,7 +149,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                            <div class="ps-block__thumbnail"><img src="img/app.png" alt=""></div>
+                            <div class="ps-block__thumbnail"><img src="" alt=""></div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
                             <div class="ps-block__content">

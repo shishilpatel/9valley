@@ -58,7 +58,7 @@
         }
 
         .search_button .input-group-text i {
-            color: {{$web_config['primary_color']}}                                              !important;
+            color: {{$web_config['primary_color']}}                                               !important;
         }
 
         .navbar-expand-md .dropdown-menu > .dropdown > .dropdown-toggle {
@@ -68,12 +68,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                              !important;
+            color: {{$web_config['primary_color']}}                                               !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                                              !important;
+            color: {{$web_config['primary_color']}}                                               !important;
         }
     }
 
@@ -96,12 +96,12 @@
 
         .mega-nav1 {
             background: white;
-            color: {{$web_config['primary_color']}}                                              !important;
+            color: {{$web_config['primary_color']}}                                               !important;
             border-radius: 3px;
         }
 
         .mega-nav1 .nav-link {
-            color: {{$web_config['primary_color']}}                 !important;
+            color: {{$web_config['primary_color']}}                  !important;
         }
     }
 
@@ -173,7 +173,7 @@
                     <img style="width: 50%"
                          src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
                          onerror="this.src='{{asset('public/theme/martfury/img/Yeapcart.png')}}'"
-                         alt="{{$web_config['name']->value}}"></a>
+                         alt="{{$web_config['name']->value}}" alt="{{$web_config['name']->value}} | Yeap&#169;Cart "></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search search_form" action="{{route('products')}}"
@@ -280,7 +280,9 @@
                     <div class="ps-block--user-header">
                         @if(auth('customer')->check())
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a href="{{route('user-account')}}">{{\App\CPU\translate('hello')}}, {{auth('customer')->user()->f_name}}</a><a
+                            <div class="ps-block__right"><a
+                                    href="{{route('user-account')}}">{{\App\CPU\translate('hello')}}
+                                    , {{auth('customer')->user()->f_name}}</a><a
                                     href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
                             </div>
                         @else

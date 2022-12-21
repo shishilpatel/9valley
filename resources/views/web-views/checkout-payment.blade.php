@@ -46,7 +46,7 @@
                                             <input type="hidden" name="payment_method" value="cash_on_delivery">
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="150" style="margin-top: -10px"
-                                                     src="{{asset('public/assets/front-end/img/cod.png')}}"/>
+                                                     src="{{asset('public/assets/front-end/img/cod.png')}}" alt="Cash on Delivery on YeapCart"/>
                                             </button>
                                         </form>
                                     </div>
