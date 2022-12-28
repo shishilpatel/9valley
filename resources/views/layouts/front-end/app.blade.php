@@ -18,7 +18,7 @@
           href="{{asset('public/theme/martfury/fonts/Linearicons/Linearicons/Font/demo-files/demo.css')}}">
     <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/plugins/bootstrap/css/bootstrap.min.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.carousel.min.css')}}">--}}
-    <link rel="stylesheet"
+    <link as="style" rel="stylesheet preload"
           href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/slick/slick/slick.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/nouislider/nouislider.min.css')}}">--}}
