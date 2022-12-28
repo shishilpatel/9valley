@@ -34,6 +34,7 @@
             .sidebar_heading {
                 background: {{$web_config['primary_color']}}
 
+
             }
 
             .headerTitle {
@@ -64,116 +65,147 @@
     <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <div class="row no-gutters">
             <div class="col-lg-6 iframe-full-height-wrap ">
-                <img style="" class="for-contac-image" src="{{asset("public/assets/front-end/png/contact.png")}}" alt="">
+                <img style="" class="for-contac-image" src="{{asset("public/assets/front-end/png/contact.png")}}"
+                     alt="">
             </div>
             <div class="col-lg-6 for-send-message px-4 px-xl-5  box-shadow-sm">
                 <h2 class="h4 mb-4 text-center"
                     style="color: #030303; font-weight:600;">{{\App\CPU\translate('send_us_a_message')}}</h2>
-                    <form action="{{route('contact.store')}}" method="POST" id="getResponse">
-                        @csrf
-                        <div class="row">
-                          <div class="col-sm-6">
-                              <div class="form-group">
-                                <label >{{\App\CPU\translate('your_name')}}</label>
+                <form action="{{route('contact.store')}}" method="POST" id="getResponse">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>{{\App\CPU\translate('your_name')}}</label>
                                 <input class="form-control name" name="name" type="text"
-                                  value="{{ old('name') }}" placeholder="John Doe" required>
+                                       value="{{ old('name') }}" placeholder="John Doe" required>
 
-                              </div>
                             </div>
-                          <div class="col-sm-6">
-                              <div class="form-group">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
                                 <label for="cf-email">{{\App\CPU\translate('email_address')}}</label>
                                 <input class="form-control email" name="email" type="email"
-                                  value="{{ old('email') }}"
-                                  placeholder="johndoe@email.com" required >
+                                       value="{{ old('email') }}"
+                                       placeholder="johndoe@email.com" required>
 
-                              </div>
                             </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
                                 <label for="cf-phone">{{\App\CPU\translate('your_phone')}}</label>
-                                <input class="form-control mobile_number"  type="text" name="mobile_number" maxlength="10"
-                                  value="{{ old('mobile_number') }}"  placeholder="{{\App\CPU\translate('Contact Number')}}" required>
+                                <input class="form-control mobile_number" type="text" name="mobile_number"
+                                       maxlength="10"
+                                       value="{{ old('mobile_number') }}"
+                                       placeholder="{{\App\CPU\translate('Contact Number')}}" required>
 
-                              </div>
                             </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
                                 <label for="cf-subject">{{\App\CPU\translate('Subject')}}:</label>
                                 <input class="form-control subject" type="text" name="subject"
-                                  value="{{ old('subject') }}"   placeholder="{{\App\CPU\translate('Short title')}}" required>
+                                       value="{{ old('subject') }}" placeholder="{{\App\CPU\translate('Short title')}}"
+                                       required>
 
-                              </div>
                             </div>
-                             <div class="col-md-12">
-                            <div class="form-group">
-                              <label for="cf-message">{{\App\CPU\translate('Message')}}</label>
-                              <textarea class="form-control message" name="message"   rows="6" required>{{ old('subject') }}</textarea>
-                            </div>
-                          </div>
                         </div>
-                        {{-- recaptcha --}}
-                        @php($recaptcha = \App\CPU\Helpers::get_business_settings('recaptcha'))
-                        @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                            <div id="recaptcha_element" style="width: 100%;" data-type="image"></div>
-                            <br/>
-                        @else
-                            <div class="row p-2">
-                                <div class="col-6 pr-0">
-                                    <input type="text" class="form-control form-control-lg" name="default_captcha_value" value=""
-                                        placeholder="{{\App\CPU\translate('Enter captcha value')}}" style="border: none" autocomplete="off">
-                                </div>
-                                <div class="col-6 input-icons" style="border-radius: 5px;">
-                                    <a onclick="javascript:re_captcha();">
-                                        <img src="{{ URL('/contact/code/captcha/1') }}" class="input-field" id="default_recaptcha_id" style="display: inline;width: 90%;height: auto;">
-                                        <i class="tio-refresh icon"></i>
-                                    </a>
-                                </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="cf-message">{{\App\CPU\translate('Message')}}</label>
+                                <textarea class="form-control message" name="message" rows="6"
+                                          required>{{ old('subject') }}</textarea>
                             </div>
-                        @endif
-                        <div class=" ">
-                          <button class="btn btn--primary" type="submit" >{{\App\CPU\translate('send')}}</button>
-                      </div>
-                    </form>
+                        </div>
+                    </div>
+                    {{-- recaptcha --}}
+                    @php($recaptcha = \App\CPU\Helpers::get_business_settings('recaptcha'))
+                    @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                        <div id="recaptcha_element" style="width: 100%;" data-type="image"></div>
+                        <br/>
+                    @else
+                        <div class="row p-2">
+                            <div class="col-6 pr-0">
+                                <input type="text" class="form-control form-control-lg" name="default_captcha_value"
+                                       value=""
+                                       placeholder="{{\App\CPU\translate('Enter captcha value')}}" style="border: none"
+                                       autocomplete="off">
+                            </div>
+                            <div class="col-6 input-icons" style="border-radius: 5px;">
+                                <a onclick="javascript:re_captcha();">
+                                    <img src="{{ URL('/contact/code/captcha/1') }}" class="input-field"
+                                         id="default_recaptcha_id" style="display: inline;width: 90%;height: auto;">
+                                    <i class="tio-refresh icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                    <div class=" ">
+                        <button class="ps-btn btn--primary" type="submit">{{\App\CPU\translate('send')}}</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+        <div class="row no-gutters">
+            <div class="col-lg-12 iframe-full-height-wrap ">
+                <p style="font-size: 17px;">Please fill the contact form or email us if you have any queries about the site, Product, Seller, advertising, or anything else.</p>
+
+                <div style="">
+                    <p style="">
+                        <i class="fas fa-envelope-open-text" style="color: #2c3e50; font-size: 20px;"></i>
+                        <b><i> <span id="W_Email"><a href="mailto:support@yeapcart.com">support@yeapcart.com</a></span></i></b><br>
+
+                        <i class="fab fa-whatsapp" style="font-size: 20px;"></i> <b>
+                            <span id="W_whatsapp"><a href="https://wa.me/message/CSKTU6NYP2YQL1">+919019290192</a></span></b><br></p>
+
+                    <h3 style="">We will revert you as soon as possible...!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 @endsection
 
 
 @push('script')
-{{-- recaptcha scripts start --}}
-@if(isset($recaptcha) && $recaptcha['status'] == 1)
-    <script type="text/javascript">
-        var onloadCallback = function () {
-            grecaptcha.render('recaptcha_element', {
-                'sitekey': '{{ \App\CPU\Helpers::get_business_settings('recaptcha')['site_key'] }}'
-            });
-        };
-    </script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
-            defer></script>
-    <script>
-        $("#getResponse").on('submit', function (e) {
-            var response = grecaptcha.getResponse();
+    {{-- recaptcha scripts start --}}
+    @if(isset($recaptcha) && $recaptcha['status'] == 1)
+        <script type="text/javascript">
+            var onloadCallback = function () {
+                grecaptcha.render('recaptcha_element', {
+                    'sitekey': '{{ \App\CPU\Helpers::get_business_settings('recaptcha')['site_key'] }}'
+                });
+            };
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
+                defer></script>
+        <script>
+            $("#getResponse").on('submit', function (e) {
+                var response = grecaptcha.getResponse();
 
-            if (response.length === 0) {
-                e.preventDefault();
-                toastr.error("{{\App\CPU\translate('Please check the recaptcha')}}");
+                if (response.length === 0) {
+                    e.preventDefault();
+                    toastr.error("{{\App\CPU\translate('Please check the recaptcha')}}");
+                }
+            });
+        </script>
+    @else
+        <script type="text/javascript">
+            function re_captcha() {
+                $url = "{{ URL('/contact/code/captcha') }}";
+                $url = $url + "/" + Math.random();
+                document.getElementById('default_recaptcha_id').src = $url;
+                console.log('url: ' + $url);
             }
-        });
-    </script>
-@else
-<script type="text/javascript">
-    function re_captcha() {
-        $url = "{{ URL('/contact/code/captcha') }}";
-        $url = $url + "/" + Math.random();
-        document.getElementById('default_recaptcha_id').src = $url;
-        console.log('url: '+ $url);
-    }
-</script>
-@endif
-{{-- recaptcha scripts end --}}
+        </script>
+    @endif
+    {{-- recaptcha scripts end --}}
 @endpush
 

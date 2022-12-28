@@ -53,7 +53,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
     Route::get('seller-profile/{id}', 'WebController@seller_profile')->name('seller-profile');
 
     Route::get('flash-deals/{id}', 'WebController@flash_deals')->name('flash-deals');
-    Route::get('terms', 'WebController@termsandCondition')->name('terms');
+    Route::get('terms-condition', 'WebController@termsandCondition')->name('terms');
     Route::get('privacy-policy', 'WebController@privacy_policy')->name('privacy-policy');
 
     Route::get('/product/{slug}', 'WebController@product')->name('product');
@@ -127,7 +127,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
     //FAQ route
     Route::get('helpTopic', 'WebController@helpTopic')->name('helpTopic');
     //Contacts
-    Route::get('contacts', 'WebController@contacts')->name('contacts');
+    Route::get('contact-us', 'WebController@contacts')->name('contacts');
+    Route::get('return-refund-policy', 'WebController@refund_return')->name('refund-return');
 
     //sellerShop
     Route::get('shopView/{id}', 'WebController@seller_shop')->name('shopView');

@@ -2209,4 +2209,5 @@
   'incomplete_info' => 'Incomplete info',
   'Menu' => 'Menu',
   'Wishlist' => 'Wishlist',
+  'Return & Refund Policy' => 'Return & Refund Policy',
 );

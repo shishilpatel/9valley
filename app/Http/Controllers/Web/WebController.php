@@ -921,6 +921,11 @@ class WebController extends Controller
         return view('web-views.contacts');
     }
 
+    public function refund_return()
+    {
+        return view('web-views.return_refund');
+    }
+
     public function about_us()
     {
         $about_us = BusinessSetting::where('type', 'about_us')->first();

@@ -212,7 +212,7 @@
                     <li><a href="{{route('privacy-policy')}}">Privacy & Policy</a></li>
                     <li><a href="{{route('terms')}}">Term & Condition</a></li>
                     <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="{{route('refund-return')}}">Return & Refund Policy</a></li>
                     <li><a href="{{route('helpTopic')}}">FAQs</a></li>
                 </ul>
             </aside>
