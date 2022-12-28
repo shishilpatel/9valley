@@ -12,24 +12,24 @@
           href="{{asset('storage/app/public/company')}}/{{$web_config['fav_icon']->value}}">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
-          rel="stylesheet" defer>
+          as="style" rel="stylesheet preload" defer>
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/font-awesome/css/font-awesome.min.css')}}">--}}
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/fonts/Linearicons/Linearicons/Font/demo-files/demo.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.carousel.min.css')}}">
+    <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/plugins/bootstrap/css/bootstrap.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.carousel.min.css')}}">--}}
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/slick/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/nouislider/nouislider.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/nouislider/nouislider.min.css')}}">--}}
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/plugins/lightGallery-master/dist/css/lightgallery.min.css')}}">
-    <link rel="stylesheet"
+    <link as="style" rel="stylesheet preload"
           href="{{asset('public/theme/martfury/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
     <script src="https://kit.fontawesome.com/a84e1ef45e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/select2/dist/css/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/css/market-place-3.css')}}">
+    <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/css/style.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/css/market-place-3.css')}}">--}}
     @stack('css_or_js')
 
     {{--dont touch this--}}
@@ -168,7 +168,7 @@
 <script src="{{asset("public/theme/martfury/plugins/lightGallery-master/dist/js/lightgallery-all.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/sticky-sidebar/dist/sticky-sidebar.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/select2/dist/js/select2.full.min.js")}}"></script>
-<script src="{{asset("public/theme/martfury/plugins/gmap3.min.js")}}"></script>
+<script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/gmap3.min.js")}}"></script>
 <!-- custom scripts-->
 <script src="{{asset("public/theme/martfury/js/main.js")}}"></script>
 {{--Toastr--}}

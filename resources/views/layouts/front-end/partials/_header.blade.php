@@ -390,14 +390,22 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <div class="ps-dropdown language"><a href="#"><img src="img/flag/en.png" alt="">English</a>
-                        <ul class="ps-dropdown-menu">
-                            <li><a href="#"><img src="img/flag/germany.png" alt=""> Germany</a></li>
-                            <li><a href="#"><img src="img/flag/fr.png" alt=""> France</a></li>
-                        </ul>
-                    </div>
-                </li>
+                @if($currency_model=='multi_currency')
+                    <li>
+                        <div class="ps-dropdown language">
+                            <a href="#">{{session('currency_code')}} {{session('currency_symbol')}}</a>
+                            <ul class="ps-dropdown-menu">
+                                @foreach (\App\Model\Currency::where('status', 1)->get() as $key => $currency)
+                                    <li style="cursor: pointer;padding: 6px"
+                                        onclick="currency_change('{{$currency['code']}}')">
+                                        {{ $currency->name }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
             </ul>
         </div>
     </div>
