@@ -166,7 +166,7 @@
 <script src="{{asset("public/theme/martfury/plugins/jquery-bar-rating/dist/jquery.barrating.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/slick-animation.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/lightGallery-master/dist/js/lightgallery-all.min.js")}}"></script>
-<script src="{{asset("public/theme/martfury/plugins/sticky-sidebar/dist/sticky-sidebar.min.js")}}"></script>
+<script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/sticky-sidebar/dist/sticky-sidebar.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/select2/dist/js/select2.full.min.js")}}"></script>
 <script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/gmap3.min.js")}}"></script>
 <!-- custom scripts-->
