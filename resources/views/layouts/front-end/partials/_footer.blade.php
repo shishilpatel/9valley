@@ -229,9 +229,9 @@
                 <h4 class="widget-title">Bussiness</h4>
                 <ul class="ps-list--link">
                     <li><a href="#">Our Press</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
-                    <li><a href="my-account.html">My account</a></li>
-                    <li><a href="shop-default.html">Shop</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Shop</a></li>
                 </ul>
             </aside>
         </div>
