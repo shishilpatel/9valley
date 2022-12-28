@@ -20,13 +20,13 @@
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.carousel.min.css')}}">--}}
     <link as="style" rel="stylesheet preload"
           href="{{asset('public/theme/martfury/plugins/owl-carousel/assets/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/slick/slick/slick.css')}}">
+    <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/plugins/slick/slick/slick.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/nouislider/nouislider.min.css')}}">--}}
     <link rel="stylesheet"
           href="{{asset('public/theme/martfury/plugins/lightGallery-master/dist/css/lightgallery.min.css')}}">
     <link as="style" rel="stylesheet preload"
           href="{{asset('public/theme/martfury/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
-    <script src="https://kit.fontawesome.com/a84e1ef45e.js" crossorigin="anonymous"></script>
+    <script as="script" rel="preload" src="https://kit.fontawesome.com/a84e1ef45e.js" crossorigin="anonymous"></script>
     <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/plugins/select2/dist/css/select2.min.css')}}">
     <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/css/style.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/css/market-place-3.css')}}">--}}
