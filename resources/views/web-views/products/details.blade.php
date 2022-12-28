@@ -213,7 +213,6 @@
                                             class="cz-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
                                             id="image{{$key}}">
                                             <img class="cz-image-zoom img-responsive" style="width:100%;max-height:323px;"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                 src="{{asset("storage/app/public/product/$photo")}}"
                                                 data-zoom="{{asset("storage/app/public/product/$photo")}}"
                                                 alt="Product image" width="">
@@ -232,9 +231,7 @@
                                                         <div class="cz-thumblist">
                                                             <a class="cz-thumblist-item  {{$key==0?'active':''}} d-flex align-items-center justify-content-center "
                                                             href="#image{{$key}}">
-                                                                <img
-                                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                                    src="{{asset("storage/app/public/product/$photo")}}"
+                                                                <img src="{{asset("storage/app/public/product/$photo")}}"
                                                                     alt="Product thumb">
                                                             </a>
                                                         </div>
@@ -688,7 +685,6 @@
                                         <div>
                                             <img style="width: 80px; border-radius: 50%"
                                                 src="{{asset('storage/app/public/shop')}}/{{$product->seller->shop->image}}"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                 alt="">
                                         </div>
                                         <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">
@@ -793,7 +789,6 @@
                                     <div class="col-3">
                                         <img style="height: 65px; width: 65px; border-radius: 50%"
                                             src="{{asset("storage/app/public/company")}}/{{$web_config['fav_icon']->value}}"
-                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                             alt="">
                                     </div>
                                     <div class="col-9 mt-2">

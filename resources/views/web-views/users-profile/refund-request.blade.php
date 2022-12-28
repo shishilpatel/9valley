@@ -37,7 +37,6 @@
                             <div class="row">
                                 <div class="col-3 col-sm-2">
                                     <img class="d-block"
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                         alt="VR Collection" width="60">
                                 </div>
@@ -58,11 +57,11 @@
                     <?php
                     $total_product_price = 0;
                     foreach ($order->details as $key => $or_d) {
-                        $total_product_price += ($or_d->qty*$or_d->price) + $or_d->tax - $or_d->discount; 
+                        $total_product_price += ($or_d->qty*$or_d->price) + $or_d->tax - $or_d->discount;
                     }
                         $refund_amount = 0;
                         $subtotal = ($order_details->price * $order_details->qty) - $order_details->discount + $order_details->tax;
-                        
+
                         $coupon_discount = ($order->discount_amount*$subtotal)/$total_product_price;
 
                         $refund_amount = $subtotal - $coupon_discount;
@@ -81,13 +80,13 @@
                         <div class="card-body">
                             <div class="row">
                                 <form action="{{route('refund-store')}}"  method="post" enctype="multipart/form-data">
-                                    @csrf 
+                                    @csrf
                                     <input type="hidden" name="order_details_id" value="{{$order_details->id}}">
                                     <input type="hidden" name="amount" value="{{$refund_amount}}">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="input-label" for="name">{{\App\CPU\translate('refund_reason')}}</label>
-                                            <textarea class="form-control" name="refund_reason" cols="120" 
+                                            <textarea class="form-control" name="refund_reason" cols="120"
                                                    required>{{old('details')}}</textarea>
                                         </div>
                                     </div>
@@ -96,10 +95,10 @@
                                             <label for="exampleInputEmail1">{{\App\CPU\translate('attachment')}}</label>
                                             <div class="row coba"></div>
                                         </div>
-    
+
                                     </div>
                                     <button type="submit" class="btn btn--primary">{{\App\CPU\translate('submit')}}</button>
-                                    
+
                                 </form>
                             </div>
                         </div>

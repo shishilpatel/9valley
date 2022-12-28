@@ -207,13 +207,11 @@
                     @if($shop['id'] != 0)
                         <img style="width:100%; height: auto; max-height: 13.75rem; border-radius: 10px;"
                              src="{{asset('storage/app/public/shop/banner')}}/{{$shop->banner}}"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                              alt="">
                     @else
                         @php($banner=\App\CPU\Helpers::get_business_settings('shop_banner'))
                         <img style="width:100%; height: auto; max-height: 13.75rem; border-radius: 10px;"
                              src="{{asset("storage/app/public/shop")}}/{{$banner??""}}"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                              alt="">
                     @endif
                 </div>
@@ -238,12 +236,10 @@
                                 @if($shop['id'] != 0)
                                     <img style="max-height: 115px;width:120px; border-radius: 5px;"
                                          src="{{asset('storage/app/public/shop')}}/{{$shop->image}}"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                          alt="">
                                 @else
                                     <img style="height: 120px;width:120px; border-radius: 5px;"
                                          src="{{asset('storage/app/public/company')}}/{{$web_config['fav_icon']->value}}"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                          alt="">
                                 @endif
                             </div>
@@ -379,7 +375,6 @@
                                                     <img
                                                         class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
                                                         style="width: 20px; border-radius:5px;height:20px;"
-                                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                         src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">
                                                     <label class="for-hover-lable" style="cursor: pointer"
                                                            onclick="location.href='{{route('shopView',['id'=> $seller_id,'category_id'=>$category['id']])}}'" {{--onclick="productSearch({{$seller_id}}, {{$category['id']}})"--}}>

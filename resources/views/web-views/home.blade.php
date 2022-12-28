@@ -693,7 +693,7 @@
                                 <div class="d-flex align-items-center justify-content-center"
                                      style="height:100px;margin:5px;">
                                     <img style="border-radius: 50%;"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                          src="{{asset("storage/app/public/brand/$brand->image")}}"
                                          alt="{{$brand->name}}">
                                 </div>
@@ -796,7 +796,7 @@
                                  style="margin:20px 20px -20px 20px;padding-top: 20px;">
                                 <img style="border-radius:5px 5px 0px opx;"
                                      src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal_of_the_day->product['thumbnail']}}"
-                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                      alt="">
                             </div>
                             <div
@@ -856,7 +856,7 @@
                                      style="margin:20px 20px -20px 20px;padding-top: 20px;">
                                     <img style=""
                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                          alt="">
                                 </div>
                                 <div
@@ -951,7 +951,7 @@
                        style="cursor: pointer;">
                         <img class="d-block footer_banner_img"
                              style="width: 100%;border-radius: 5px;height: auto !important;"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                              src="{{asset('storage/app/public/banner')}}/{{$main_section_banner['photo']}}">
                     </a>
                 </div>
@@ -1026,7 +1026,7 @@
                                         <div class="text-center" style="margin: 5px;">
                                             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                                 <img style="vertical-align: middle; height: 100px;border-radius: 5px;"
-                                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                                      src="{{asset("storage/app/public/category/$category->icon")}}"
                                                      alt="{{$category->name}}">
                                                 <p class="text-center small "
@@ -1069,7 +1069,7 @@
                                                         <a href="{{route('shopView',['id'=>$seller['id']])}}">
                                                             <img
                                                                 style="vertical-align: middle; padding: 2%;width:100px;height: 100px;border-radius: 50%"
-                                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                                                 src="{{asset("storage/app/public/shop")}}/{{$seller->shop->image}}">
                                                             <p class="text-center small ">{{Str::limit($seller->shop->name, 14)}}</p>
                                                         </a>
@@ -1159,7 +1159,7 @@
                                                    style="width:100%;height:100%;"
                                                    href="{{route('product',$bestSell->product->slug)}}">
                                                     <img style="border-radius:5px;"
-                                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$bestSell->product['thumbnail']}}"
                                                          alt="Product"/>
                                                 </a>
@@ -1252,7 +1252,7 @@
                                                    style="width:100%;height:100%;"
                                                    href="{{route('product',$top->product->slug)}}">
                                                     <img style="border-radius:5px;"
-                                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$top->product['thumbnail']}}"
                                                          alt="Product"/>
                                                 </a>
@@ -1315,7 +1315,7 @@
                     <a href="{{$banner->url}}"
                        style="cursor: pointer;">
                         <img class="" style="width: 100%; border-radius:5px;height:auto;"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+{{--                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
                              src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}">
                     </a>
                 </div>

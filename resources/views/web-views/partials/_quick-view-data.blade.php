@@ -130,7 +130,6 @@
                         @foreach (json_decode($product->images) as $key => $photo)
                             <div class="cz-preview-item d-flex align-items-center justify-content-center  {{$key==0?'active':''}}">
                                 <img class="show-imag img-responsive" style="max-height: 500px!important;"
-                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                      src="{{asset("storage/app/public/product/$photo")}}"
                                      alt="Product image" width="">
                             </div>
@@ -145,7 +144,6 @@
                                     <div class="cz-thumblist">
                                         <a href="javascript:" class=" cz-thumblist-item d-flex align-items-center justify-content-center">
                                             <img class="click-img" src="{{asset("storage/app/public/product/$photo")}}"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                  alt="Product thumb">
                                         </a>
                                     </div>

@@ -47,7 +47,6 @@
                                 <a class="d-inline-block mx-auto mr-sm-4"
                                    href="{{route('product',$productDetails->slug)}}" style="width: 10rem;">
                                     <img
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$productDetails['thumbnail']}}">
                                 </a>
                                 <div class="media-body pt-2">

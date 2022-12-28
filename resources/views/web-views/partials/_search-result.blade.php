@@ -1,9 +1,12 @@
 @foreach($products as $i)
 
     <div class="ps-product ps-product--wide ps-product--search-result">
-        <div class="ps-product__thumbnail"><a href="product-default.html"><img
-                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                    src="{{asset("storage/app/public/product/")}}/{{$i['thumbnail']}}" alt=""/></a></div>
+        <div class="ps-product__thumbnail">
+            <a href="product-default.html">
+                <img
+                    src="{{asset("storage/app/public/product/")}}/{{$i['thumbnail']}}" alt=""/>
+            </a>
+        </div>
         <div class="ps-product__content">
             <a class="ps-product__title" onmouseover="$('.search-bar-input-mobile').val('{{$i['name']}}');$('.search-bar-input').val('{{$i['name']}}');" onclick="$('.search_form').submit()">{{$i['name']}}</a>
             <div class="ps-product__rating">

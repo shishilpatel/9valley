@@ -18,8 +18,7 @@
                  style="padding-{{Session::get('direction') === "rtl" ?'right:12px':'left:12px'}};padding-top:12px;">
                 <div class="flash-deals-background-image">
                     <img style="height: 125px!important;width:125px!important;border-radius:5px;"
-                     src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
-                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"/>
+                     src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"/>
                 </div>
             </div>
             <div class="flash_deal_product_details pl-3 pr-3 pr-1 d-flex align-items-center">
