@@ -27,7 +27,7 @@
     <link as="style" rel="stylesheet preload"
           href="{{asset('public/theme/martfury/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
     <script src="https://kit.fontawesome.com/a84e1ef45e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('public/theme/martfury/plugins/select2/dist/css/select2.min.css')}}">
+    <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/plugins/select2/dist/css/select2.min.css')}}">
     <link as="style" rel="stylesheet preload" href="{{asset('public/theme/martfury/css/style.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('public/theme/martfury/css/market-place-3.css')}}">--}}
     @stack('css_or_js')
@@ -163,11 +163,11 @@
 <script src="{{asset("public/theme/martfury/plugins/isotope.pkgd.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/jquery.matchHeight-min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/slick/slick/slick.min.js")}}"></script>
-<script src="{{asset("public/theme/martfury/plugins/jquery-bar-rating/dist/jquery.barrating.min.js")}}"></script>
+<script as="script" rel="preload"  src="{{asset("public/theme/martfury/plugins/jquery-bar-rating/dist/jquery.barrating.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/slick-animation.min.js")}}"></script>
 <script src="{{asset("public/theme/martfury/plugins/lightGallery-master/dist/js/lightgallery-all.min.js")}}"></script>
 <script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/sticky-sidebar/dist/sticky-sidebar.min.js")}}"></script>
-<script src="{{asset("public/theme/martfury/plugins/select2/dist/js/select2.full.min.js")}}"></script>
+<script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/select2/dist/js/select2.full.min.js")}}"></script>
 <script as="script" rel="preload" src="{{asset("public/theme/martfury/plugins/gmap3.min.js")}}"></script>
 <!-- custom scripts-->
 <script src="{{asset("public/theme/martfury/js/main.js")}}"></script>
