@@ -273,15 +273,15 @@
                     <div class="ps-block--user-header">
                         @if(auth('customer')->check())
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a
-                                    href="{{route('user-account')}}">{{\App\CPU\translate('hello')}}
-                                    , {{auth('customer')->user()->f_name}}</a><a
-                                    href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+                            <div class="ps-block__right">
+                                <a href="{{route('user-account')}}">{{\App\CPU\translate('hello')}} , {{auth('customer')->user()->f_name}}</a>
+                                <a href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
                             </div>
                         @else
                             <div class="ps-block__left"><i class="icon-user"></i></div>
-                            <div class="ps-block__right"><a href="{{route('customer.auth.login')}}">Login</a><a
-                                    href="{{route('customer.auth.sign-up')}}">Register</a>
+                            <div class="ps-block__right">
+                                <a href="{{route('customer.auth.login')}}">Login</a>
+                                <a href="{{route('customer.auth.login')}}{{route('customer.auth.sign-up')}}">Register</a>
                             </div>
                         @endif
 
@@ -380,7 +380,7 @@
         </div>
         <div class="header__right">
             <ul class="navigation__extra">
-                <li><a href="#">Sell on YeapCart</a></li>
+                <li><a href="{{route('shop.apply')}}">Sell on YeapCart</a></li>
                 <li><a href="https://yeapcart.pickrr.com">Tract your order</a></li>
                 <li>
                     <div class="ps-dropdown"><a href="#">US Dollar</a>
@@ -484,8 +484,8 @@
                 </div>
                 <div class="ps-block--user-header">
                     <div class="ps-block__left"><i class="icon-user"></i></div>
-                    <div class="ps-block__right"><a href="my-account.html">Login</a><a
-                            href="my-account.html">Register</a></div>
+                    <div class="ps-block__right"><a href="{{route('customer.auth.login')}}">Login</a><a
+                            href="{{route('customer.auth.sign-up')}}">Register</a></div>
                 </div>
             </div>
         </div>
@@ -516,7 +516,7 @@
                 <div class="ps-cart__content">
                     <div class="ps-product--cart-mobile">
                         <div class="ps-product__thumbnail"><a href="#">
-                                <img src="img/products/clothing/7.jpg" alt=""></a>
+                                <img src="" alt=""></a>
                         </div>
                         <div class="ps-product__content">
                             <a class="ps-product__remove" href="#">
@@ -533,8 +533,8 @@
                 <div class="ps-cart__footer">
                     <h3>Sub Total:<strong>{{\App\CPU\Helpers::currency_converter($sub_total)}}</strong></h3>
                     <figure>
-                        <a class="ps-btn" href="shopping-cart.html">View Cart</a>
-                        <a class="ps-btn" href="checkout.html">Checkout</a>
+                        <a class="ps-btn" href="{{route('shop-cart')}}">View Cart</a>
+                        <a class="ps-btn" href="{{route('checkout-details')}}">Checkout</a>
                     </figure>
                 </div>
             </div>
@@ -579,28 +579,6 @@
 
                 @endif
             @endforeach
-
-            {{--            <li class="menu-item-has-children has-mega-menu">--}}
-            {{--                <a href="#">Consumer Electronic</a>--}}
-            {{--                <span class="sub-toggle"></span>--}}
-            {{--                <div class="mega-menu">--}}
-            {{--                    <div class="mega-menu__column">--}}
-            {{--                        <h4>Electronic<span class="sub-toggle"></span></h4>--}}
-            {{--                        <ul class="mega-menu__list">--}}
-            {{--                            <li><a href="#">Home Audio &amp; Theathers</a>--}}
-            {{--                            </li>--}}
-            {{--                        </ul>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="mega-menu__column">--}}
-            {{--                        <h4>Accessories &amp; Parts<span class="sub-toggle"></span></h4>--}}
-            {{--                        <ul class="mega-menu__list">--}}
-            {{--                            <li><a href="#">Digital Cables</a>--}}
-            {{--                            </li>--}}
-            {{--                        </ul>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </li>--}}
-
         </ul>
     </div>
 </div>

@@ -168,8 +168,8 @@
                                     </div>
                                 </form>
                                 <p class="download-link"><a href="#">
-                                        <img src="img/google-play.png" alt=""></a>
-                                    <a href="#"><img src="img/app-store.png" alt=""></a>
+                                        <img src="#" alt=""></a>
+                                    <a href="#"><img src="#" alt=""></a>
                                 </p>
                             </div>
                         </div>
@@ -268,7 +268,7 @@
 
 <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
     <div class="ps-search__content">
-        <form class="ps-form--primary-search" action="https://nouthemes.net/html/martfury/do_action" method="post">
+        <form class="ps-form--primary-search" action="#" method="post">
             <input class="form-control" type="text" placeholder="Search for...">
             <button><i class="aroma-magnifying-glass"></i></button>
         </form>
@@ -282,15 +282,15 @@
                 <div class="ps-product__header">
                     <div class="ps-product__thumbnail" data-vertical="false">
                         <div class="ps-product__images" data-arrow="true">
-                            <div class="item"><img src="img/products/detail/fullwidth/1.jpg" alt=""></div>
-                            <div class="item"><img src="img/products/detail/fullwidth/2.jpg" alt=""></div>
-                            <div class="item"><img src="img/products/detail/fullwidth/3.jpg" alt=""></div>
+                            <div class="item"><img src="#" alt=""></div>
+                            <div class="item"><img src="#" alt=""></div>
+                            <div class="item"><img src="#" alt=""></div>
                         </div>
                     </div>
                     <div class="ps-product__info">
                         <h1>Marshall Kilburn Portable Wireless Speaker</h1>
                         <div class="ps-product__meta">
-                            <p>Brand:<a href="shop-default.html">Sony</a></p>
+                            <p>Brand:<a href="#">Sony</a></p>
                             <div class="ps-product__rating">
                                 <select class="ps-rating" data-read-only="true">
                                     <option value="1">1</option>
@@ -303,7 +303,7 @@
                         </div>
                         <h4 class="ps-product__price">$36.78 – $56.99</h4>
                         <div class="ps-product__desc">
-                            <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                            <p>Sold By:<a href="#"><strong> Go Pro</strong></a></p>
                             <ul class="ps-list--dot">
                                 <li> Unrestrained and portable active stereo speaker</li>
                                 <li> Free from the confines of wires and chords</li>
